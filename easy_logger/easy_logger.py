@@ -76,7 +76,12 @@ def _log_versions():
     logger.debug("Not currently logging versions")
 
 
-def configure_logger(log_path: Path, file_name: Optional[str] = None, debug=True):
+def configure_logger(
+    log_path: Path,
+    file_name: Optional[str] = None,
+    debug=True,
+    specific_module: Optional[str] = None,
+):
     """Generate a logger
 
     Produces a consistent style of logger, editing the json file allows it to easily be modified
@@ -103,6 +108,10 @@ def configure_logger(log_path: Path, file_name: Optional[str] = None, debug=True
         pkg_resources.resource_filename("easy_logger", "logger.json"), "rt"
     ) as json_file:
         config = json.load(json_file)
+
+    if specific_module is not None:
+        logger.info(f"{specific_module} will get its own handler")
+        config["loggers"][specific_module] = config["loggers"]["specific module"]
     if debug is False:
         config["root"]["level"] = "INFO"
     # Get name of file which called this
