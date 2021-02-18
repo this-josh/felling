@@ -1,6 +1,6 @@
 import logging
-from logging import exception, log
-from typing import Dict, Optional, Union
+from typing import Dict, Optional, Sequence, Union
+from types import ModuleType
 from pathlib import Path
 
 logger = logging.getLogger("Initial logs")
@@ -28,18 +28,15 @@ def _update_filenames(
     from datetime import datetime as dt
 
     file_name = dt.now().strftime("%y%m%d-%H%M_") + file_name
-    debug_log_path = log_path / (file_name + "_debug.log")
-    info_log_path = log_path / (file_name + "_info.log")
-    warning_log_path = log_path / (file_name + "_warning.log")
+    log_path = log_path / (file_name + ".log")
 
-    config["handlers"]["debug_file_handler"]["filename"] = debug_log_path
-    config["handlers"]["info_file_handler"]["filename"] = info_log_path
-    config["handlers"]["warning_file_handler"]["filename"] = warning_log_path
+    config["handlers"]["file_handler"]["filename"] = log_path
 
     return config
 
 
-def _get_git_commit_hash():
+def _get_git_commit_hash() -> str:
+    """Get the most recent git commit hash"""
     import subprocess
 
     try:
@@ -71,16 +68,36 @@ def _initial_logs():
     logger.info(f"Git remote and branch info: {_get_git_branch_and_remote()}")
 
 
-def _log_versions():
+def _log_versions(packages_to_log):
     """Use this to log which version of dependent packages are being used"""
-    logger.debug("Not currently logging versions")
+    if packages_to_log is None:
+        return
+    for pack in packages_to_log:
+        try:
+            logger.info(
+                f"Package {pack.__name__} has version number {pack.__version__}"
+            )
+        except:
+            logger.info(f"Failed to log {pack} version.")
+
+
+def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
+    if modules is not None:
+
+        modules = [modules] if isinstance(modules, str) else modules
+        for error_only_module in modules:
+            logger.info(f"{error_only_module} will only have errors logged")
+            config["loggers"][error_only_module] = config["loggers"]["Error only"]
 
 
 def configure_logger(
     log_path: Path,
     file_name: Optional[str] = None,
-    debug=True,
-    specific_module: Optional[str] = None,
+    file_log_level: Optional[str] = "DEBUG",
+    std_out_log_level: Optional[str] = "INFO",
+    error_only_modules: Optional[Union[str, Sequence[str]]] = None,
+    modules_to_debug: Optional[str] = None,
+    package_versions_to_log: Optional[ModuleType] = None,
 ):
     """Generate a logger
 
@@ -92,7 +109,7 @@ def configure_logger(
         The path to save the logs to, must be a path otherwise could get relative location issues.
     file_name : Optional[str], default is None
         The file name that is being run, if blank it will be inferred
-    debug : Optional[bool], default is True
+    debug : Optional[bool], default is False
         Whether to include debug messages
     """
     import logging.config
@@ -109,17 +126,17 @@ def configure_logger(
     ) as json_file:
         config = json.load(json_file)
 
-    if specific_module is not None:
-        logger.info(f"{specific_module} will get its own handler")
-        config["loggers"][specific_module] = config["loggers"]["specific module"]
-    if debug is False:
-        config["root"]["level"] = "INFO"
+    _specific_modules(config, error_only_modules)
+    _specific_modules(config, modules_to_debug)
+
+    config["handlers"]["file_handler"]["level"] = file_log_level
+    config["handlers"]["console"]["level"] = std_out_log_level
+
     # Get name of file which called this
     from os.path import basename
 
     caller = basename(inspect.stack()[1][1]).replace(".py", "")
-    if file_name == None:
-        file_name = caller
+    file_name = caller if file_name is None else file_name
 
     # update log file names
     config = _update_filenames(config, file_name, log_path)
@@ -127,4 +144,4 @@ def configure_logger(
     # configure logger
     logging.config.dictConfig(config)
     _initial_logs()
-    _log_versions()
+    _log_versions(package_versions_to_log)
