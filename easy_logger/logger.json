@@ -26,38 +26,22 @@
             "maxBytes": 10485760,
             "backupCount": 20,
             "encoding": "utf8"
-        },
-        "info_file_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
-            "level": "INFO",
-            "formatter": "simple",
-            "filename": "info.log",
-            "maxBytes": 10485760,
-            "backupCount": 20,
-            "encoding": "utf8"
-        },
-        "warning_file_handler": {
-            "class": "logging.handlers.RotatingFileHandler",
-            "level": "WARNING",
-            "formatter": "detailed",
-            "filename": "warnings.log",
-            "maxBytes": 10485760,
-            "backupCount": 20,
-            "encoding": "utf8"
         }
     },
     "loggers": {
         "Error only": {
             "level": "ERROR",
             "handlers": [
-                "console"
+                "console",
+                "file_handler"
             ],
             "propagate": false
         },
         "Debug logger": {
             "level": "DEBUG",
             "handlers": [
-                "console"
+                "console",
+                "file_handler"
             ],
             "propagate": false
         }
@@ -67,9 +51,7 @@
         "level": "DEBUG",
         "handlers": [
             "console",
-            "file_handler",
-            "info_file_handler",
-            "warning_file_handler"
+            "file_handler"
         ]
     }
 }
