@@ -2,6 +2,14 @@ import logging
 from typing import Dict, Optional, Sequence, Union
 from types import ModuleType
 from pathlib import Path
+from logging.config import dictConfig
+import subprocess
+import subprocess
+import getpass
+import json
+import pkg_resources
+import inspect
+from os.path import basename
 
 logger = logging.getLogger("Initial logs")
 
@@ -37,8 +45,6 @@ def _update_filenames(
 
 def _get_git_commit_hash() -> str:
     """Get the most recent git commit hash"""
-    import subprocess
-
     try:
         return subprocess.check_output(["git", "rev-parse", "HEAD"])
     except subprocess.CalledProcessError as e:
@@ -47,7 +53,6 @@ def _get_git_commit_hash() -> str:
 
 
 def _get_git_branch_and_remote():
-    import subprocess
 
     logger = logging.getLogger("Initial logs")
 
@@ -61,7 +66,6 @@ def _get_git_branch_and_remote():
 def _initial_logs():
     """write some initial logs"""
     # write the user name
-    import getpass
 
     logger.info(f"Username: {getpass.getuser()}")
     logger.info(f"Most recent git commit hash: {_get_git_commit_hash()}")
@@ -83,7 +87,6 @@ def _log_versions(packages_to_log):
 
 def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
     if modules is not None:
-
         modules = [modules] if isinstance(modules, str) else modules
         for error_only_module in modules:
             logger.info(f"{error_only_module} will only have errors logged")
@@ -112,10 +115,6 @@ def configure_logger(
     debug : Optional[bool], default is False
         Whether to include debug messages
     """
-    import logging.config
-    import json
-    import pkg_resources
-    import inspect
 
     # Check if logging is enabled
     if logging.root.manager.disable >= 50:
@@ -133,7 +132,6 @@ def configure_logger(
     config["handlers"]["console"]["level"] = std_out_log_level
 
     # Get name of file which called this
-    from os.path import basename
 
     caller = basename(inspect.stack()[1][1]).replace(".py", "")
     file_name = caller if file_name is None else file_name
@@ -142,6 +140,6 @@ def configure_logger(
     config = _update_filenames(config, file_name, log_path)
 
     # configure logger
-    logging.config.dictConfig(config)
+    dictConfig(config)
     _initial_logs()
     _log_versions(package_versions_to_log)
