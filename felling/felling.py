@@ -60,7 +60,7 @@ def _get_git_branch_and_remote():
     try:
         return subprocess.check_output(["git", "remote", "show", "origin"])
     except subprocess.CalledProcessError:
-        logger.exception("Failed to get remote git info.")
+        logger.error("Failed to get remote git info. Does your repo have a remote?")
 
 
 def _initial_logs():
@@ -93,8 +93,8 @@ def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
             config["loggers"][error_only_module] = config["loggers"]["Error only"]
 
 
-def configure_logger(
-    log_path: Path,
+def configure(
+    log_path: Union[Path, str],
     file_name: Optional[str] = None,
     file_log_level: Optional[str] = "DEBUG",
     std_out_log_level: Optional[str] = "INFO",
@@ -115,13 +115,22 @@ def configure_logger(
     debug : Optional[bool], default is False
         Whether to include debug messages
     """
-
     # Check if logging is enabled
     if logging.root.manager.disable >= 50:
         return
+
+    if not isinstance(log_path, Path):
+        raise TypeError(f"log_path must be a pathlib Path, not {type(log_path)}")
+
+    if not log_path.is_dir():
+        # Ironically print as logs are not yet set up
+        # TODO: set up simple config?
+        logger.warning(f"Log path does not exist, will create {log_path.absolute()}")
+        log_path.mkdir()
+
     # read in logger config
     with open(
-        pkg_resources.resource_filename("easy_logger", "logger.json"), "rt"
+        pkg_resources.resource_filename("felling", "logger.json"), "rt"
     ) as json_file:
         config = json.load(json_file)
 

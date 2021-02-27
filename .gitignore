@@ -125,4 +125,4 @@ dmypy.json
 .pyre/
 
 # repo_specific
-easy_logger_env/
+log_env/
