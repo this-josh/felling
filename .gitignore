@@ -123,3 +123,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# repo_specific
+easy_logger_env/
