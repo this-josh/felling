@@ -64,7 +64,9 @@ def _get_git_branch_and_remote():
     logger = logging.getLogger("Initial logs")
 
     try:
-        return subprocess.check_output(["git", "remote", "show", "origin"]).decode('UTF-8')
+        return subprocess.check_output(["git", "remote", "show", "origin"]).decode(
+            "UTF-8"
+        )
     except subprocess.CalledProcessError:
         logger.error("Failed to get remote git info. Does your repo have a remote?")
 
