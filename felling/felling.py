@@ -123,9 +123,9 @@ def configure(
         Whether to include debug messages
     """
     # Check if logging is enabled
-    if logging.root.isEnabledFor(50):
+    if not logging.root.isEnabledFor(50):
         print(
-            "Logging has been disabled at root, `logging.root.manager.disable >= 50`. Felling will not run."
+            "Logging has been disabled at root, `logging.root.isEnabledFor(50)` is False. Felling will not run."
         )
         return
 
