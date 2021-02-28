@@ -1,6 +1,7 @@
 import logging
-from typing import Dict, Optional, Sequence, Union
+from typing import Any, Dict, Optional, Sequence, Union, List
 from types import ModuleType
+from numbers import Integral
 from pathlib import Path
 from logging.config import dictConfig
 import subprocess
@@ -15,8 +16,10 @@ logger = logging.getLogger("Initial logs")
 
 
 def _update_filenames(
-    config: Dict[str, str], file_name: str, log_path: Path
-) -> Dict[str, str]:
+    config: Dict[str, Any],
+    file_name: str,
+    log_path: Path,
+) -> Dict[str, Any]:
     """Create a new file name for each time the code is run
 
     Parameters
@@ -46,7 +49,11 @@ def _update_filenames(
 def _get_git_commit_hash() -> str:
     """Get the most recent git commit hash"""
     try:
-        return subprocess.check_output(["git", "rev-parse", "HEAD"])
+        return (
+            subprocess.check_output(["git", "rev-parse", "HEAD"])
+            .decode("UTF-8")
+            .strip()
+        )
     except subprocess.CalledProcessError as e:
         logger.error(str(e))
         return "Failed to read git commit hash."
@@ -81,8 +88,8 @@ def _log_versions(packages_to_log):
             logger.info(
                 f"Package {pack.__name__} has version number {pack.__version__}"
             )
-        except:
-            logger.info(f"Failed to log {pack} version.")
+        except ModuleNotFoundError as e:
+            logger.info(f"Failed to log {pack} version, {e}")
 
 
 def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
@@ -94,7 +101,7 @@ def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
 
 
 def configure(
-    log_path: Union[Path, str],
+    log_path: Path,
     file_name: Optional[str] = None,
     file_log_level: Optional[str] = "DEBUG",
     std_out_log_level: Optional[str] = "INFO",
@@ -116,7 +123,10 @@ def configure(
         Whether to include debug messages
     """
     # Check if logging is enabled
-    if logging.root.manager.disable >= 50:
+    if logging.root.isEnabledFor(50):
+        print(
+            "Logging has been disabled at root, `logging.root.manager.disable >= 50`. Felling will not run."
+        )
         return
 
     if not isinstance(log_path, Path):
