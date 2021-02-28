@@ -156,12 +156,8 @@ def configure(
     config["handlers"]["file_handler"]["level"] = file_log_level
     config["handlers"]["console"]["level"] = std_out_log_level
 
-    # Get name of file which called this
-
-    caller = basename(inspect.stack()[1][1]).replace(".py", "")
-    file_name = caller if file_name is None else file_name
-
     # update log file names
+    file_name = caller_info.stem if file_name is None else file_name
     config = _update_filenames(config, file_name, log_path)
 
     # configure logger
