@@ -100,7 +100,7 @@ def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
 
 
 def configure(
-    log_path: Path,
+    log_path: Union[Path, str, None] = None,
     file_name: Optional[str] = None,
     file_log_level: Optional[str] = "DEBUG",
     std_out_log_level: Optional[str] = "INFO",
@@ -128,8 +128,15 @@ def configure(
         )
         return
 
-    if not isinstance(log_path, Path):
-        raise TypeError(f"log_path must be a pathlib Path, not {type(log_path)}")
+    caller_info = Path(inspect.stack()[1].filename)
+
+    if isinstance(log_path, str):
+        log_path = Path(log_path)
+    elif log_path is None:
+        print(
+            f"Log path is {log_path}, a folder 'logs' will be created in the same dir as __main__"
+        )
+        log_path = caller_info.parent / "logs"
 
     if not log_path.is_dir():
         # Ironically print as logs are not yet set up
