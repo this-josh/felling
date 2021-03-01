@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
-import felling
 
-version = felling.__version__
+version = '0.0.1'
 project_urls = {
     "Source": "https://github.com/this-josh/felling",
     "Tracker": "https://github.com/this-josh/felling/issues",
