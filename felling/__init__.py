@@ -5,6 +5,6 @@ from felling.felling import configure
 
 __name__ = "felling"
 xyversion = "0.0.1"
-release = "rc2"
+release = ""
 # combined version
 __version__ = f"{xyversion}{release}"
