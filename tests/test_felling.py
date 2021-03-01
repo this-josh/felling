@@ -1,8 +1,10 @@
+import os
+import shutil
+
+
 def test_configure_default_path():
     """Quick sanity check test"""
     from felling import configure
-    import os
-    import shutil
 
     log_path = "./tests/logs"
     configure()
