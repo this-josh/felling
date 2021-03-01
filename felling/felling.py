@@ -1,16 +1,14 @@
 import logging
-from typing import Any, Dict, Optional, Sequence, Union, List
+from typing import Any, Dict, Optional, Sequence, Union
 from types import ModuleType
-from numbers import Integral
 from pathlib import Path
+from datetime import datetime as dt
 from logging.config import dictConfig
-import subprocess
 import subprocess
 import getpass
 import json
 import pkg_resources
 import inspect
-from os.path import basename
 
 logger = logging.getLogger("Initial logs")
 
@@ -36,7 +34,6 @@ def _update_filenames(
     Dict[str, str]
         The amended logging config dictionary
     """
-    from datetime import datetime as dt
 
     file_name = dt.now().strftime("%y%m%d-%H%M_") + file_name
     log_path = log_path / (file_name + ".log")
@@ -60,9 +57,7 @@ def _get_git_commit_hash() -> str:
 
 
 def _get_git_branch_and_remote():
-
-    logger = logging.getLogger("Initial logs")
-
+    """Get information about the git branch and remote"""
     try:
         return subprocess.check_output(["git", "remote", "show", "origin"]).decode(
             "UTF-8"
@@ -73,8 +68,6 @@ def _get_git_branch_and_remote():
 
 def _initial_logs():
     """write some initial logs"""
-    # write the user name
-
     logger.info(f"Username: {getpass.getuser()}")
     logger.info(f"Most recent git commit hash: {_get_git_commit_hash()}")
     logger.info(f"Git remote and branch info: {_get_git_branch_and_remote()}")
