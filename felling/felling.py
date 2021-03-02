@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Dict, Optional, Sequence, Union, Collection
+from typing import Any, Dict, Optional, Sequence, Union, List
 from types import ModuleType
 from pathlib import Path
 from datetime import datetime as dt
@@ -73,7 +73,7 @@ def _initial_logs():
     logger.info(f"Git remote and branch info: {_get_git_branch_and_remote()}")
 
 
-def _log_versions(packages_to_log: Optional[Collection[ModuleType]]):
+def _log_versions(packages_to_log: Optional[List[ModuleType]]):
     """Use this to log which version of dependent packages are being used"""
     if packages_to_log is None:
         return
@@ -111,7 +111,7 @@ def configure(
     std_out_log_level: Optional[str] = "INFO",
     error_only_modules: Optional[Union[str, Sequence[str]]] = None,
     modules_to_debug: Optional[str] = None,
-    package_versions_to_log: Optional[Union[ModuleType, Collection[ModuleType]]] = None,
+    package_versions_to_log: Optional[Union[ModuleType, List[ModuleType]]] = None,
 ):
     """
     Configure logging for this run time
