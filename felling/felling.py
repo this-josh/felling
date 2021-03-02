@@ -86,6 +86,9 @@ def _log_versions(packages_to_log: Optional[Collection[ModuleType]]):
             )
         except ModuleNotFoundError as e:
             logger.info(f"Failed to log {pack} version, {e}")
+        except Exception as e:
+            logger.exception(e.args)
+            logger.info(f"{pack} version will not be logged.")
 
 
 def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
