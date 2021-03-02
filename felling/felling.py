@@ -103,18 +103,25 @@ def configure(
     modules_to_debug: Optional[str] = None,
     package_versions_to_log: Optional[ModuleType] = None,
 ):
-    """Generate a logger
-
-    Produces a consistent style of logger, editing the json file allows it to easily be modified
+    """
+    Configure logging for this run time
 
     Parameters
     ----------
-    log_path : Path
-        The path to save the logs to, must be a path otherwise could get relative location issues.
-    file_name : Optional[str], default is None
-        The file name that is being run, if blank it will be inferred
-    debug : Optional[bool], default is False
-        Whether to include debug messages
+    log_path : Union[Path, str, None], optional
+        The path to save logs to, by default None
+    log_file_name : Optional[str], optional
+        The log file name, by default None
+    file_log_level : Optional[str], optional
+        The minimum log level to write to file, by default "DEBUG"
+    std_out_log_level : Optional[str], optional
+        The minimum log level to write to std out, by default "INFO"
+    error_only_modules : Optional[Union[str, Sequence[str]]], optional
+        Modules to only log errors, by default None
+    modules_to_debug : Optional[str], optional
+        Modules to log debug logs, by default None
+    package_versions_to_log : Optional[ModuleType], optional
+        Packages to log versions for, by default None
     """
     # Check if logging is enabled
     if not logging.root.isEnabledFor(50):
