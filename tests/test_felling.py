@@ -99,7 +99,7 @@ def test_get_git_branch_and_remote():
     assert isinstance(git_branch_and_remote, str)
 
     # 13 on my machine, 11 on github action, for now just check greater than 10
-    assert git_branch_and_remote.count("\n") < 10
+    assert git_branch_and_remote.count("\n") > 10
     assert git_branch_and_remote.count("https://github.com/this-josh/felling.git") == 2
 
 
