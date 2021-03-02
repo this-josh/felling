@@ -99,7 +99,7 @@ When configuring a `pathlib.Path` or a `str` path can be provide as the director
 
 ```python
 import felling
-felling.configure(log_file_name = 'logs_for_foo.log')
+felling.configure(log_file_name = 'logs_for_foo')
 ```
 
 When configuring a custom file name for the log file can be passed
