@@ -166,8 +166,13 @@ def test_specific_modules_multiple_module_debug_only():
 def test_logging_disabled():
     import logging
     from felling.felling import configure
+    import sys
 
-    logging.disable()
+    print(sys.version_info)
+    if sys.version_info.minor <= 6:
+        logging.disable(50)
+    else:
+        logging.disable()
 
     log_path = "./tests/logs"
     shutil.rmtree(log_path, ignore_errors=True)
