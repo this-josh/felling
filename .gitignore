@@ -126,3 +126,4 @@ dmypy.json
 
 # repo_specific
 log_env/
+.vscode/
