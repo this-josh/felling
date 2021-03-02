@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.0.1'
+version = "0.0.1"
 project_urls = {
     "Source": "https://github.com/this-josh/felling",
     "Tracker": "https://github.com/this-josh/felling/issues",
@@ -30,4 +30,5 @@ setup(
     long_description_content_type="text/markdown",
     keywords="logging logs log",
     license="MIT",
+    python_requires=">3.5",
 )
