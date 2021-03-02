@@ -94,8 +94,26 @@ def _log_versions(packages_to_log: Optional[List[ModuleType]]):
 def _specific_modules(
     config: Dict[str, Any],
     modules: Optional[Union[str, Sequence[str]]],
-    debug_or_error: Union["DEBUG", "ERROR"],
-):
+    debug_or_error: str,
+) -> Dict[str, Any]:
+    """
+    Give specific modules their own handlers
+
+    Parameters
+    ----------
+    config : Dict[str, Any]
+        The config data
+    modules : Optional[Union[str, Sequence[str]]]
+        Modules to give handlers
+    debug_or_error : str
+        Must be either "ERROR" or "DEBUG", whether to give handlers for errors or debug
+
+    Returns
+    -------
+    Dict[str, Any]
+        The modified config data
+    """
+
     if modules is not None:
         modules = [modules] if isinstance(modules, str) else modules
         for module in modules:
