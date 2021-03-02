@@ -91,12 +91,17 @@ def _log_versions(packages_to_log: Optional[Collection[ModuleType]]):
             logger.info(f"{pack} version will not be logged.")
 
 
-def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
+def _specific_modules(
+    config: Dict[str, Any],
+    modules: Optional[Union[str, Sequence[str]]],
+    debug_or_error: Literal["DEBUG", "ERROR"],
+):
     if modules is not None:
         modules = [modules] if isinstance(modules, str) else modules
-        for error_only_module in modules:
-            logger.info(f"{error_only_module} will only have errors logged")
-            config["loggers"][error_only_module] = config["loggers"]["Error only"]
+        for module in modules:
+            logger.info(f"{module} will only have {debug_or_error} logged")
+            config["loggers"][module] = config["loggers"][f"{debug_or_error} only"]
+    return config
 
 
 def configure(
