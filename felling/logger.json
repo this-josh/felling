@@ -29,7 +29,7 @@
         }
     },
     "loggers": {
-        "Error only": {
+        "ERROR only": {
             "level": "ERROR",
             "handlers": [
                 "console",
@@ -37,7 +37,7 @@
             ],
             "propagate": false
         },
-        "Debug logger": {
+        "DEBUG logger": {
             "level": "DEBUG",
             "handlers": [
                 "console",
