@@ -1,6 +1,6 @@
 # felling :evergreen_tree:
 
->  **felling** *verb*: to cut down
+>  **felling** *verb*: to cut down  
 > 	Synonyms: Logging
 
 Felling easily improves repeatability and debugging of code by always initially logging some runtime metadata and ensuring logs are always written to a file
