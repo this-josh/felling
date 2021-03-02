@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Dict, Literal, Optional, Sequence, Union, Collection
+from typing import Any, Dict, Optional, Sequence, Union, Collection
 from types import ModuleType
 from pathlib import Path
 from datetime import datetime as dt
@@ -94,7 +94,7 @@ def _log_versions(packages_to_log: Optional[Collection[ModuleType]]):
 def _specific_modules(
     config: Dict[str, Any],
     modules: Optional[Union[str, Sequence[str]]],
-    debug_or_error: Literal["DEBUG", "ERROR"],
+    debug_or_error: Union["DEBUG", "ERROR"],
 ):
     if modules is not None:
         modules = [modules] if isinstance(modules, str) else modules
