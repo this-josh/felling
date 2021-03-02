@@ -162,8 +162,8 @@ def configure(
     ) as json_file:
         config = json.load(json_file)
 
-    _specific_modules(config, error_only_modules)
-    _specific_modules(config, modules_to_debug)
+    config = _specific_modules(config, error_only_modules, "ERROR")
+    config = _specific_modules(config, modules_to_debug, "DEBUG")
 
     config["handlers"]["file_handler"]["level"] = file_log_level
     config["handlers"]["console"]["level"] = std_out_log_level
