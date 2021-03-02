@@ -15,7 +15,7 @@ logger = logging.getLogger("Initial logs")
 
 def _update_filenames(
     config: Dict[str, Any],
-    file_name: str,
+    log_file_name: str,
     log_path: Path,
 ) -> Dict[str, Any]:
     """Create a new file name for each time the code is run
@@ -24,7 +24,7 @@ def _update_filenames(
     ----------
     config : Dict[str, str]
         The logging config dictionary from logger.json
-    file_name : str
+    log_file_name : str
         The file name that is to be used
     log_path : Path
         The path to save the logs to
@@ -35,8 +35,8 @@ def _update_filenames(
         The amended logging config dictionary
     """
 
-    file_name = dt.now().strftime("%y%m%d-%H%M_") + file_name
-    log_path = log_path / (file_name + ".log")
+    log_file_name = dt.now().strftime("%y%m%d-%H%M_") + log_file_name
+    log_path = log_path / (log_file_name + ".log")
 
     config["handlers"]["file_handler"]["filename"] = log_path
 
@@ -96,7 +96,7 @@ def _specific_modules(config, modules: Optional[Union[str, Sequence[str]]]):
 
 def configure(
     log_path: Union[Path, str, None] = None,
-    file_name: Optional[str] = None,
+    log_file_name: Optional[str] = None,
     file_log_level: Optional[str] = "DEBUG",
     std_out_log_level: Optional[str] = "INFO",
     error_only_modules: Optional[Union[str, Sequence[str]]] = None,
@@ -152,8 +152,8 @@ def configure(
     config["handlers"]["console"]["level"] = std_out_log_level
 
     # update log file names
-    file_name = caller_info.stem if file_name is None else file_name
-    config = _update_filenames(config, file_name, log_path)
+    log_file_name = caller_info.stem if log_file_name is None else log_file_name
+    config = _update_filenames(config, log_file_name, log_path)
 
     # configure logger
     dictConfig(config)
