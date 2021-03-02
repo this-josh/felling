@@ -77,6 +77,8 @@ def _log_versions(packages_to_log: Optional[Collection[ModuleType]]):
     """Use this to log which version of dependent packages are being used"""
     if packages_to_log is None:
         return
+    if isinstance(packages_to_log, ModuleType):
+        packages_to_log = [packages_to_log]
     for pack in packages_to_log:
         try:
             logger.info(
