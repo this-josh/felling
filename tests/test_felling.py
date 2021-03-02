@@ -8,6 +8,8 @@ def test_configure_default_path():
     from felling import configure
 
     log_path = "./tests/logs"
+    shutil.rmtree(log_path, ignore_errors=True)
+
     configure()
 
     assert len(os.listdir(log_path)) == 1
@@ -19,6 +21,8 @@ def test_configure_str_path():
     from felling import configure
 
     log_path = "./tests/logs"
+    shutil.rmtree(log_path, ignore_errors=True)
+
     configure(log_path)
 
     assert len(os.listdir(log_path)) == 1
@@ -30,6 +34,8 @@ def test_configure_pathlib_path():
     from felling import configure
 
     log_path = Path("./tests/logs")
+    shutil.rmtree(log_path, ignore_errors=True)
+
     configure(log_path)
 
     assert len(os.listdir(log_path)) == 1
