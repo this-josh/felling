@@ -41,8 +41,8 @@ def get_config():
     cfg = VersioneerConfig()
     cfg.VCS = "git"
     cfg.style = "pep440"
-    cfg.tag_prefix = "felling v"
-    cfg.parentdir_prefix = "felling v"
+    cfg.tag_prefix = "felling-v"
+    cfg.parentdir_prefix = "felling-v"
     cfg.versionfile_source = "felling/_version.py"
     cfg.verbose = False
     return cfg
