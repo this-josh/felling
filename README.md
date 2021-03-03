@@ -3,6 +3,9 @@
 >  **felling** *verb*: to cut down  
 > 	Synonyms: Logging
 
+[![PyPI Latest Release](https://img.shields.io/pypi/v/felling.svg)](https://pypi.org/project/felling/)[![License](https://img.shields.io/github/license/this-josh/felling)](https://github.com/this-josh/felling/blob/main/LICENSE)[![Python package](https://github.com/this-josh/felling/actions/workflows/python-package.yml/badge.svg?branch=main)](https://github.com/this-josh/felling/actions/workflows/python-package.yml)[![Coverage](https://codecov.io/github/this-josh/felling/coverage.svg?branch=master)](https://codecov.io/gh/this-josh/felling)[![Issues](https://img.shields.io/github/issues/this-josh/felling)](https://github.com/this-josh/felling/issues)[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+
 Felling easily improves repeatability and debugging of code by always initially logging some runtime metadata and ensuring logs are always written to a file
 
 ```python
@@ -10,7 +13,6 @@ import felling
 felling.configure()
 # Done!
 ```
-[TOC]
 
 ## Usage
 
@@ -27,7 +29,7 @@ felling.configure()
 
 ## Logging in Python :snake:
 
-This is a basic explanation of logging in python, none of this is specific too felling.
+This is a basic explanation of logging in python, none of this is specific to felling.
 
 First, you must import logging and name your logger, this is usually done by:  
 
