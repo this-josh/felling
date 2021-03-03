@@ -13,7 +13,6 @@ import felling
 felling.configure()
 # Done!
 ```
-[TOC]
 
 ## Usage
 
