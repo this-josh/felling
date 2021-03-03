@@ -29,7 +29,7 @@ felling.configure()
 
 ## Logging in Python :snake:
 
-This is a basic explanation of logging in python, none of this is specific too felling.
+This is a basic explanation of logging in python, none of this is specific to felling.
 
 First, you must import logging and name your logger, this is usually done by:  
 
