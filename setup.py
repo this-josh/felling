@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import versioneer
 
 version = "0.0.2"
 project_urls = {
@@ -19,7 +20,6 @@ classifiers = [
 
 setup(
     name="felling",
-    version=version,
     description="A simple package to easily create consistent logs",
     author="Josh Kirk",
     author_email="felling@joshkirk.co.uk",
@@ -31,4 +31,7 @@ setup(
     keywords="logging logs log",
     license="MIT",
     python_requires=">3.7",
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
 )
+
