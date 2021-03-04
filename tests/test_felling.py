@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import shutil
+import pytest
 
 
 def test_configure_default_path():
@@ -131,36 +132,58 @@ def test_log_versions_multiple_package():
 
 def test_specific_modules_one_module_error_only():
     from felling.felling import _specific_modules
+    import re
 
     config = {"loggers": {"ERROR only": "ERROR only handler"}}
-    config = _specific_modules(config, "Ash", "ERROR")
-    assert config["loggers"]["Ash"] == "ERROR only handler"
+    config = _specific_modules(config, re, "ERROR")
+    assert config["loggers"]["re"] == "ERROR only handler"
 
 
 def test_specific_modules_multiple_module_error_only():
     from felling.felling import _specific_modules
+    import re
+    import os
 
     config = {"loggers": {"ERROR only": "ERROR only handler"}}
-    config = _specific_modules(config, ["Ash", "Birch"], "ERROR")
-    assert config["loggers"]["Ash"] == "ERROR only handler"
-    assert config["loggers"]["Birch"] == "ERROR only handler"
+    config = _specific_modules(config, [re, os], "ERROR")
+    assert config["loggers"]["re"] == "ERROR only handler"
+    assert config["loggers"]["os"] == "ERROR only handler"
 
 
 def test_specific_modules_one_module_debug_only():
     from felling.felling import _specific_modules
+    import re
 
     config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
-    config = _specific_modules(config, "Ash", "DEBUG")
-    assert config["loggers"]["Ash"] == "DEBUG only handler"
+    config = _specific_modules(config, re, "DEBUG")
+    assert config["loggers"]["re"] == "DEBUG only handler"
 
 
 def test_specific_modules_multiple_module_debug_only():
     from felling.felling import _specific_modules
+    import re
+    import os
 
     config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
-    config = _specific_modules(config, ["Ash", "Birch"], "DEBUG")
-    assert config["loggers"]["Ash"] == "DEBUG only handler"
-    assert config["loggers"]["Birch"] == "DEBUG only handler"
+    config = _specific_modules(config, [re, os], "DEBUG")
+    assert config["loggers"]["re"] == "DEBUG only handler"
+    assert config["loggers"]["os"] == "DEBUG only handler"
+
+
+def test_specific_modules_single_str_module():
+    from felling.felling import _specific_modules
+
+    config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
+    with pytest.raises(TypeError) as e:
+        config = _specific_modules(config, "Ash", "DEBUG")
+
+
+def test_specific_modules_multiple_str_module():
+    from felling.felling import _specific_modules
+
+    config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
+    with pytest.raises(TypeError) as e:
+        config = _specific_modules(config, ["Ash", "Birch"], "DEBUG")
 
 
 def test_logging_disabled():
