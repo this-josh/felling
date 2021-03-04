@@ -92,6 +92,22 @@ def test_get_git_commit_hash():
     assert re.match(r"\b[0-9a-f]{5,40}\b", commit_hash)
 
 
+@pytest.fixture()
+def _mocked_get_git_commit_hash(mocker):
+    mocker.patch(
+        "felling.felling.subprocess.check_output",
+        return_value="str does not have decode",
+    )
+
+
+def test_get_git_commit_hash(_mocked_get_git_commit_hash):
+    from felling.felling import _get_git_commit_hash
+
+    commit_hash = _get_git_commit_hash()
+
+    assert commit_hash is None
+
+
 def test_get_git_branch_and_remote():
     from felling.felling import _get_git_branch_and_remote
 
