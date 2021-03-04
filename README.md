@@ -145,3 +145,20 @@ felling.configure(package_versions_to_log = pandas)
 ```
 
 For repeatability it can be helpful to log package versions, packages past to `package_versions_to_log` will have their version numbers logged while running initial logs
+
+### Comparing log files
+
+Have you refactored some code? Do you not have 100% test coverage? Of course not “it’s only experimental code” :wink: We all know what you have done. We can compare before and after log files to add some extra validity to your code change or to easily find where things change
+
+*Note:  This is **absolutely** not a replacement to testing, and will only provide any benefit if you have comprehensive debug logs* 
+
+#### How to run
+
+The following script will run the comparison.
+
+```shell
+python -m felling {str_to_first_log_file} {str_to_second_log_file}
+```
+
+If all is identical it’ll let you know, otherwise it will print the first 100 differences. If you’d like more than 100 differences pass `-v`
+
