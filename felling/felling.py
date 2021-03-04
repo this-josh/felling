@@ -54,6 +54,8 @@ def _get_git_commit_hash() -> str:
     except subprocess.CalledProcessError as e:
         logger.error(str(e))
         return "Failed to read git commit hash."
+    except Exception as e:
+        logger.exception(f"Unexpected error when trying to get git commit hash")
 
 
 def _get_git_branch_and_remote():
@@ -79,16 +81,22 @@ def _log_versions(packages_to_log: Optional[List[ModuleType]]):
         return
     if isinstance(packages_to_log, ModuleType):
         packages_to_log = [packages_to_log]
-    for pack in packages_to_log:
-        try:
-            logger.info(
-                f"Package {pack.__name__} has version number {pack.__version__}"
-            )
-        except ModuleNotFoundError as e:
-            logger.info(f"Failed to log {pack} version, {e}")
-        except Exception as e:
-            logger.exception(e.args)
-            logger.info(f"{pack} version will not be logged.")
+    try:
+        for pack in packages_to_log:
+            try:
+                logger.info(
+                    f"Package {pack.__name__} has version number {pack.__version__}"
+                )
+            except AttributeError as e:
+                logger.info(f"Failed to log {pack} version, {e}")
+            except Exception as e:
+                logger.exception(e.args)
+                logger.info(f"{pack} version will not be logged.")
+    except TypeError as e:
+        logger.exception(e.args)
+        logger.info(f"packages_to_log = {packages_to_log} and is not iterable")
+    except Exception as e:
+        logger.exception(f"Failed to log packages, {packages_to_log}")
 
 
 def _specific_modules(
