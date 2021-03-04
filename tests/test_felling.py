@@ -130,6 +130,20 @@ def test_log_versions_multiple_package():
     assert _log_versions((felling, re)) is None
 
 
+def test_log_versions_invalid_package():
+    from felling.felling import _log_versions
+    import os
+
+    assert _log_versions(os) is None
+
+
+def test_log_versions_other_error():
+    from felling.felling import _log_versions
+
+    # 3 gives SyntaxError
+    assert _log_versions(3) is None
+
+
 def test_specific_modules_one_module_error_only():
     from felling.felling import _specific_modules
     import re
