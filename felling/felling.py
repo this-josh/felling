@@ -101,7 +101,7 @@ def _log_versions(packages_to_log: Optional[List[ModuleType]]):
 
 def _specific_modules(
     config: Dict[str, Any],
-    modules: Optional[Union[str, Sequence[str]]],
+    modules: Optional[Union[ModuleType, Sequence[ModuleType]]],
     debug_or_error: str,
 ) -> Dict[str, Any]:
     """
