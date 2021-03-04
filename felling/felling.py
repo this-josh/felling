@@ -54,6 +54,8 @@ def _get_git_commit_hash() -> str:
     except subprocess.CalledProcessError as e:
         logger.error(str(e))
         return "Failed to read git commit hash."
+    except Exception as e:
+        logger.exception(f"Unexpected error when trying to get git commit hash")
 
 
 def _get_git_branch_and_remote():
@@ -79,21 +81,27 @@ def _log_versions(packages_to_log: Optional[List[ModuleType]]):
         return
     if isinstance(packages_to_log, ModuleType):
         packages_to_log = [packages_to_log]
-    for pack in packages_to_log:
-        try:
-            logger.info(
-                f"Package {pack.__name__} has version number {pack.__version__}"
-            )
-        except ModuleNotFoundError as e:
-            logger.info(f"Failed to log {pack} version, {e}")
-        except Exception as e:
-            logger.exception(e.args)
-            logger.info(f"{pack} version will not be logged.")
+    try:
+        for pack in packages_to_log:
+            try:
+                logger.info(
+                    f"Package {pack.__name__} has version number {pack.__version__}"
+                )
+            except AttributeError as e:
+                logger.info(f"Failed to log {pack} version, {e}")
+            except Exception as e:
+                logger.exception(e.args)
+                logger.info(f"{pack} version will not be logged.")
+    except TypeError as e:
+        logger.exception(e.args)
+        logger.info(f"packages_to_log = {packages_to_log} and is not iterable")
+    except Exception as e:
+        logger.exception(f"Failed to log packages, {packages_to_log}")
 
 
 def _specific_modules(
     config: Dict[str, Any],
-    modules: Optional[Union[str, Sequence[str]]],
+    modules: Optional[Union[ModuleType, Sequence[ModuleType]]],
     debug_or_error: str,
 ) -> Dict[str, Any]:
     """
@@ -103,7 +111,7 @@ def _specific_modules(
     ----------
     config : Dict[str, Any]
         The config data
-    modules : Optional[Union[str, Sequence[str]]]
+    modules : Optional[Union[ModuleType, Sequence[ModuleType]]]
         Modules to give handlers
     debug_or_error : str
         Must be either "ERROR" or "DEBUG", whether to give handlers for errors or debug
@@ -113,12 +121,15 @@ def _specific_modules(
     Dict[str, Any]
         The modified config data
     """
-
     if modules is not None:
-        modules = [modules] if isinstance(modules, str) else modules
+        modules = [modules] if isinstance(modules, ModuleType) else modules
         for module in modules:
-            logger.info(f"{module} will only have {debug_or_error} logged")
-            config["loggers"][module] = config["loggers"][f"{debug_or_error} only"]
+            if not isinstance(module, ModuleType):
+                raise TypeError(f'module {module} must be a ModuleType.')
+            logger.info(f"{module.__name__} will only have {debug_or_error} logged")
+            config["loggers"][module.__name__] = config["loggers"][
+                f"{debug_or_error} only"
+            ]
     return config
 
 

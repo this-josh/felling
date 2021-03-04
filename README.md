@@ -14,6 +14,8 @@ felling.configure()
 # Done!
 ```
 
+If you find any bugs/have any request, please feel free to add a GitHub ticket. It’s only through your ideas that felling can reach its full potential.
+
 ## Usage
 
 1. Install the package with `pip install felling`
@@ -145,3 +147,28 @@ felling.configure(package_versions_to_log = pandas)
 ```
 
 For repeatability it can be helpful to log package versions, packages past to `package_versions_to_log` will have their version numbers logged while running initial logs
+
+### Comparing log files
+
+Have you refactored some code? Do you not have 100% test coverage? Of course not “it’s only experimental code” :wink: We all know what you have done. We can compare before and after log files to add some extra validity to your code change or to easily find where things change
+
+*Note:  This is **absolutely** not a replacement to testing, and will only provide any benefit if you have comprehensive debug logs* 
+
+#### How to run
+
+The following script will run the comparison.
+
+```shell
+python -m felling {str_to_first_log_file} {str_to_second_log_file}
+```
+
+If all is identical it’ll let you know, otherwise it will print the first 100 differences. If you’d like more than 100 differences pass `-v`
+
+## Isn’t felling a bit simple?
+
+> Simple is better than complex.
+
+​	*``python -c import this ` - Tim Peters*
+
+Wherever possible I try to keep `felling` as simple as possible, for now I am proud it is requirements free. A lot of the difficulty in setting this up has been gathering an understanding of logging in python and the initial setup of logging.json. 
+
