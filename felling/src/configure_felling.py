@@ -35,7 +35,7 @@ def _update_filenames(
         The amended logging config dictionary
     """
 
-    log_file_name = dt.now().strftime("%y%m%d-%H%M_") + log_file_name
+    log_file_name = dt.now().strftime("%Y%m%d-%H%M_") + log_file_name
     log_path = log_path / (log_file_name + ".log")
 
     config["handlers"]["file_handler"]["filename"] = log_path
@@ -125,7 +125,7 @@ def _specific_modules(
         modules = [modules] if isinstance(modules, ModuleType) else modules
         for module in modules:
             if not isinstance(module, ModuleType):
-                raise TypeError(f'module {module} must be a ModuleType.')
+                raise TypeError(f"module {module} must be a ModuleType.")
             logger.info(f"{module.__name__} will only have {debug_or_error} logged")
             config["loggers"][module.__name__] = config["loggers"][
                 f"{debug_or_error} only"
@@ -187,7 +187,7 @@ def configure(
 
     # read in logger config
     with open(
-        pkg_resources.resource_filename("felling", "logger.json"), "rt"
+        pkg_resources.resource_filename("felling", "/resources/logger.json"), "rt"
     ) as json_file:
         config = json.load(json_file)
 
