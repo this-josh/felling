@@ -1,4 +1,4 @@
 path_classifiers:
-  template: 
+  generated: 
     - felling/_version.py
     - versioneer.py

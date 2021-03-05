@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
 import versioneer
 
-version = "0.0.2"
 project_urls = {
     "Source": "https://github.com/this-josh/felling",
     "Tracker": "https://github.com/this-josh/felling/issues",
@@ -30,8 +29,7 @@ setup(
     long_description_content_type="text/markdown",
     keywords="logging logs log",
     license="MIT",
-    python_requires=">3.7",
+    python_requires=">=3.6",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
 )
-
