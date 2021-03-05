@@ -1,7 +1,6 @@
 from setuptools import setup, find_packages
 import versioneer
 
-version = "0.0.2"
 project_urls = {
     "Source": "https://github.com/this-josh/felling",
     "Tracker": "https://github.com/this-josh/felling/issues",
