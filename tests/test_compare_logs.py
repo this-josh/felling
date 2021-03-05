@@ -51,18 +51,34 @@ def test_find_differences():
     find_differences(sample_logs, sample_logs, 1)
 
 
-def test_compare_log_file():
+@pytest.mark.parametrize(
+    "inputs",
+    [
+        (
+            "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+            "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+            0,
+        ),
+        (
+            "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+            "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+            1,
+        ),
+        (
+            "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+            "./tests/sample_logs/19700101-0001_create_sample_logs.log",
+            0,
+        ),
+        (
+            "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+            "./tests/sample_logs/19700101-0001_create_sample_logs.log",
+            1,
+        ),
+    ],
+)
+def test_compare_log_file(inputs):
     """Test compare log file, this is only a rough test that nothing fails"""
     from felling.src.compare_logs import compare_log_file
 
-    compare_log_file(
-        "./tests/sample_logs/19700101-0000_create_sample_logs.log",
-        "./tests/sample_logs/19700101-0000_create_sample_logs.log",
-        0,
-    )
-
-    compare_log_file(
-        "./tests/sample_logs/19700101-0000_create_sample_logs.log",
-        "./tests/sample_logs/19700101-0000_create_sample_logs.log",
-        1,
-    )
+    # identical files
+    compare_log_file(*inputs)
