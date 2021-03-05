@@ -38,3 +38,23 @@ def test_tidy_logs():
     ]
     tidied_logs = tidy_logs(sample_logs)
     assert tidied_logs == expected_logs
+
+
+# TODO: Need a test for felling.src.compare_logs.find_differences
+
+
+def test_compare_log_file():
+    """Test compare log file, this is only a rough test that nothing fails"""
+    from felling.src.compare_logs import compare_log_file
+
+    compare_log_file(
+        "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+        "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+        0,
+    )
+
+    compare_log_file(
+        "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+        "./tests/sample_logs/19700101-0000_create_sample_logs.log",
+        1,
+    )
