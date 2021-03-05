@@ -44,6 +44,13 @@ def test_tidy_logs():
 # TODO: Need a test for felling.src.compare_logs.find_differences
 
 
+def test_find_differences():
+    from felling.src.compare_logs import find_differences
+
+    find_differences(sample_logs, sample_logs, 0)
+    find_differences(sample_logs, sample_logs, 1)
+
+
 def test_compare_log_file():
     """Test compare log file, this is only a rough test that nothing fails"""
     from felling.src.compare_logs import compare_log_file
