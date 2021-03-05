@@ -29,8 +29,7 @@ setup(
     long_description_content_type="text/markdown",
     keywords="logging logs log",
     license="MIT",
-    python_requires=">3.6",
+    python_requires=">=3.6",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
 )
-
