@@ -1,5 +1,12 @@
 import pytest
 
+sample_logs = [
+    "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash",
+    "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 5 has randomly been chosen. - /Users/Ash",
+    "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 5 squared is 25 - /Users/Ash",
+    "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 5 + 10 is 15 - /Users/Ash",
+]
+
 
 @pytest.mark.parametrize(
     "cli_args,expected",
@@ -24,12 +31,6 @@ def test_parse_args(cli_args, expected):
 def test_tidy_logs():
     from felling.src.compare_logs import tidy_logs
 
-    sample_logs = [
-        "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash",
-        "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 5 has randomly been chosen. - /Users/Ash",
-        "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 5 squared is 25 - /Users/Ash",
-        "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 5 + 10 is 15 - /Users/Ash",
-    ]
     expected_logs = [
         "Ash",
         "5 has randomly been chosen.",
