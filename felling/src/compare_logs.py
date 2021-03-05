@@ -1,10 +1,36 @@
 import logging
 from typing import List
 import re
-
+import argparse
 
 # configure()
 logger = logging.getLogger(__name__)
+
+
+def parse_args(cli_arguments):
+    # from difflib import get_close_matches
+
+    parser = argparse.ArgumentParser(description="Compare two log files")
+    parser.add_argument(
+        "first_file",
+        metavar="first_file",
+        type=str,
+        nargs=1,
+        help="first log file",
+    )
+    parser.add_argument(
+        "second_file",
+        metavar="second_file",
+        type=str,
+        nargs=1,
+        help="second log file",
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="count", default=0, help="How verbose to work"
+    )
+
+    args = parser.parse_args(cli_arguments)
+    return args.first_file[0], args.second_file[0], args.verbose
 
 
 def read_file(file_name: str) -> List[str]:
@@ -44,10 +70,16 @@ def tidy_logs(logs: List[str]) -> List[str]:
 
     log_messages = []
     for log in logs:
-        # Could I split using the format in logger.json?
-        log_message = re.split(r"- on line [0-9]* - ", log)[1]
-        log_message = log_message.rsplit(" - ", 1)[0]
-        log_messages.append(log_message)
+        log = log.strip()
+        # Ensure log message starts with a 4 digit number to check it is a new log message
+        if re.match(r"^[0-9]{4}", log):
+            # Could I split using the format in logger.json?
+            log_message = re.split(r"- on line [0-9]* - ", log)[1]
+            log_message = log_message.rsplit(" - ", 1)[0]
+            log_messages.append(log_message)
+        else:
+            # We must be mid-message!
+            log_messages.append(log)
     return log_messages
 
 
@@ -106,7 +138,6 @@ def compare_log_file(file_1: str, file_2: str, verbose: int):
     verbose : int
         Whether to work verbosely
     """
-
     f1_logs = read_file(file_1)
     f2_logs = read_file(file_2)
 
@@ -120,6 +151,3 @@ def compare_log_file(file_1: str, file_2: str, verbose: int):
         )
     else:
         find_differences(f1_log_messages, f2_log_messages, verbose)
-
-
-compare_log_file("sample_logs/210304-1200_run.log", "sample_logs/different.log", 0)
