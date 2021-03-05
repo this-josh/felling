@@ -138,7 +138,6 @@ def compare_log_file(file_1: str, file_2: str, verbose: int):
     verbose : int
         Whether to work verbosely
     """
-
     f1_logs = read_file(file_1)
     f2_logs = read_file(file_2)
 
