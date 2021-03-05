@@ -1,0 +1,4 @@
+path_classifiers:
+  template: 
+    - felling/_version.py
+    - versioneer.py
