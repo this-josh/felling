@@ -70,10 +70,16 @@ def tidy_logs(logs: List[str]) -> List[str]:
 
     log_messages = []
     for log in logs:
-        # Could I split using the format in logger.json?
-        log_message = re.split(r"- on line [0-9]* - ", log)[1]
-        log_message = log_message.rsplit(" - ", 1)[0]
-        log_messages.append(log_message)
+        log = log.strip()
+        # Ensure log message starts with a 4 digit number to check it is a new log message
+        if re.match(r"^[0-9]{4}", log):
+            # Could I split using the format in logger.json?
+            log_message = re.split(r"- on line [0-9]* - ", log)[1]
+            log_message = log_message.rsplit(" - ", 1)[0]
+            log_messages.append(log_message)
+        else:
+            # We must be mid-message!
+            log_messages.append(log)
     return log_messages
 
 
