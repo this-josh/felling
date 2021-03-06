@@ -81,6 +81,7 @@ def _log_versions(packages_to_log: Optional[List[ModuleType]]):
         return
     if isinstance(packages_to_log, ModuleType):
         packages_to_log = [packages_to_log]
+    assert iter(packages_to_log)
     try:
         for pack in packages_to_log:
             try:
