@@ -156,8 +156,8 @@ def test_log_versions_invalid_package():
 def test_log_versions_other_error():
     from felling.src.configure_felling import _log_versions
 
-    # 3 gives SyntaxError
-    assert _log_versions(3) is None
+    with pytest.raises(TypeError) as e:
+        assert _log_versions(3) is None
 
 
 def test_specific_modules_one_module_error_only():
