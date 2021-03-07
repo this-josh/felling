@@ -55,23 +55,20 @@ def _log_versions(packages_to_log: Optional[List[ModuleType]]):
         return
     if isinstance(packages_to_log, ModuleType):
         packages_to_log = [packages_to_log]
-    assert iter(packages_to_log)
     try:
-        for pack in packages_to_log:
-            try:
-                logger.info(
-                    f"Package {pack.__name__} has version number {pack.__version__}"
-                )
-            except AttributeError as e:
-                logger.info(f"Failed to log {pack} version, {e}")
-            except Exception as e:
-                logger.exception(e.args)
-                logger.info(f"{pack} version will not be logged.")
+        iter(packages_to_log)
     except TypeError as e:
         logger.exception(e.args)
-        logger.info(f"packages_to_log = {packages_to_log} and is not iterable")
-    except Exception as e:
-        logger.exception(f"Failed to log packages, {packages_to_log}")
+        logger.error(f"packages_to_log = {packages_to_log} and is not iterable")
+        raise
+    for pack in packages_to_log:
+        try:
+            logger.info(
+                f"Package {pack.__name__} has version number {pack.__version__}"
+            )
+        except AttributeError as e:
+            logger.error(f"Failed to log {pack} version, {e}")
+            raise
 
 
 def _specific_modules(
