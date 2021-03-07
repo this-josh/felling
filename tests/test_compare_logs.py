@@ -77,7 +77,7 @@ def test_find_difference(logs_1, logs_2, verbosity):
 
 
 @pytest.mark.parametrize(
-    "inputs",
+    ("first_file", "second_file", "verbosity"),
     [
         (
             "./tests/sample_logs/19700101-0000_create_sample_logs.log",
@@ -101,9 +101,9 @@ def test_find_difference(logs_1, logs_2, verbosity):
         ),
     ],
 )
-def test_compare_log_file(inputs):
+def test_compare_log_file(first_file, second_file, verbosity):
     """Test compare log file, this is only a rough test that nothing fails"""
     from felling.src.compare_logs import compare_log_file
 
     # identical files
-    compare_log_file(*inputs)
+    compare_log_file(first_file, second_file, verbosity)
