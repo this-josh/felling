@@ -3,7 +3,7 @@ import pytest
 with open("./tests/sample_logs/19700101-0000_create_sample_logs.log", "r") as f:
     sample_logs_1 = f.readlines()
 
-with open("./tests/sample_logs/19700101-0000_create_sample_logs.log", "r") as f:
+with open("./tests/sample_logs/19700101-0001_create_sample_logs.log", "r") as f:
     sample_logs_2 = f.readlines()
 
 simple_sample_logs = [
