@@ -1,6 +1,12 @@
 import pytest
 
-sample_logs = [
+with open("./tests/sample_logs/19700101-0000_create_sample_logs.log", "r") as f:
+    sample_logs_1 = f.readlines()
+
+with open("./tests/sample_logs/19700101-0000_create_sample_logs.log", "r") as f:
+    sample_logs_2 = f.readlines()
+
+simple_sample_logs = [
     "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash",
     "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 5 has randomly been chosen. - /Users/Ash",
     "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 5 squared is 25 - /Users/Ash",
@@ -37,18 +43,26 @@ def test_tidy_logs():
         "5 squared is 25",
         "5 + 10 is 15",
     ]
-    tidied_logs = tidy_logs(sample_logs)
+    tidied_logs = tidy_logs(simple_sample_logs)
     assert tidied_logs == expected_logs
 
 
 # TODO: Need a test for felling.src.compare_logs.find_differences
 
 
-def test_find_differences():
+@pytest.mark.parametrize(
+    ("logs_1", "logs_2", "verbosity"),
+    [
+        (sample_logs_1, sample_logs_1, 0),
+        (sample_logs_1, sample_logs_1, 1),
+        (sample_logs_1, sample_logs_2, 0),
+        (sample_logs_1, sample_logs_2, 1),
+    ],
+)
+def test_find_difference(logs_1, logs_2, verbosity):
     from felling.src.compare_logs import find_differences
 
-    find_differences(sample_logs, sample_logs, 0)
-    find_differences(sample_logs, sample_logs, 1)
+    find_differences(logs_1, logs_2, verbosity)
 
 
 @pytest.mark.parametrize(
