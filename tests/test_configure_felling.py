@@ -112,13 +112,16 @@ def test_log_versions_invalid_package():
     from felling.src.configure_felling import _log_versions
     import os
 
-    assert _log_versions(os) is None
+    with pytest.raises(
+        AttributeError, match="module 'os' has no attribute '__version__'"
+    ):
+        assert _log_versions(os) is None
 
 
 def test_log_versions_other_error():
     from felling.src.configure_felling import _log_versions
 
-    with pytest.raises(TypeError) as e:
+    with pytest.raises(TypeError, match="'int' object is not iterable"):
         assert _log_versions(3) is None
 
 
