@@ -20,6 +20,7 @@ simple_sample_logs = [
         (["Ash", "Birch"], ["Ash", "Birch", 0]),
         (["Ash", "Birch", "-v"], ["Ash", "Birch", 1]),
     ],
+    ids=["Two files, less verbose", "Two files, more verbose"],
 )
 def test_parse_args(cli_args, expected):
     from felling.src.compare_logs import parse_args
@@ -57,6 +58,16 @@ def test_tidy_logs():
         (sample_logs_1, sample_logs_1, 1),
         (sample_logs_1, sample_logs_2, 0),
         (sample_logs_1, sample_logs_2, 1),
+        (sample_logs_1, sample_logs_2[:-40], 0),
+        (sample_logs_1, sample_logs_2[:-40], 1),
+    ],
+    ids=[
+        "Identical logs, less verbose",
+        "Identical logs, more verbose",
+        "Different logs, less verbose",
+        "Different logs, more verbose",
+        "Different length logs, les verbose",
+        "Different length logs, more verbose",
     ],
 )
 def test_find_difference(logs_1, logs_2, verbosity):
