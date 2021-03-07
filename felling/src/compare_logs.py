@@ -105,9 +105,22 @@ def find_differences(
     max_differences = 100 if verbose == 0 else None
     to_print = True
     print(
-        f"Note provided log number provided will likely be slightly (<15) lines smaller than the actual line number"
+        f"Note provided log number provided will likely be slightly (~15) lines smaller than the actual line number"
     )
+    if len(f1_log_messages) != len(f2_log_messages):
+        print(
+            f"First file has len {len(f1_log_messages)}, second has len {len(f2_log_messages)}, will print differences until the first file is exhausted."
+        )
+        max_lines = min((len(f1_log_messages), len(f2_log_messages)))
+    else:
+        max_lines = None
+
     for log_number in range(len(f1_log_messages)):
+        if max_lines is not None and log_number >= max_lines:
+            print(
+                f"Reached line number {log_number} which is the length of the shorter log file, will stop looking for differences."
+            )
+            break
         if f1_log_messages[log_number] != f2_log_messages[log_number]:
             num_differences += 1
             if to_print:
