@@ -81,44 +81,6 @@ def test_update_filenames():
     )
 
 
-def test_get_git_commit_hash():
-    from felling.src.configure_felling import _get_git_commit_hash
-    import re
-
-    commit_hash = _get_git_commit_hash()
-
-    assert isinstance(commit_hash, str)
-
-    assert re.match(r"\b[0-9a-f]{5,40}\b", commit_hash)
-
-
-@pytest.fixture()
-def _mocked_get_git_commit_hash(mocker):
-    mocker.patch(
-        "felling.src.configure_felling.subprocess.check_output",
-        return_value="str does not have decode",
-    )
-
-
-def test_get_git_commit_hash(_mocked_get_git_commit_hash):
-    from felling.src.configure_felling import _get_git_commit_hash
-
-    commit_hash = _get_git_commit_hash()
-
-    assert commit_hash is None
-
-
-def test_get_git_branch_and_remote():
-    from felling.src.configure_felling import _get_git_branch_and_remote
-
-    git_branch_and_remote = _get_git_branch_and_remote()
-
-    assert isinstance(git_branch_and_remote, str)
-
-    # 13 on my machine, 11 on github action, for now just check greater than 10
-    assert git_branch_and_remote.count("\n") > 10
-
-
 def test_initial_logs():
     from felling.src.configure_felling import _initial_logs
 
