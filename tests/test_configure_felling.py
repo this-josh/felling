@@ -1,4 +1,5 @@
 import os
+import re
 from pathlib import Path
 import shutil
 import pytest
@@ -46,7 +47,6 @@ def test_configure_pathlib_path():
 def test_configure_file_name():
     """Check custom file names are working"""
     from felling.src.configure_felling import configure
-    import re
 
     log_path = Path("./tests/logs")
     shutil.rmtree(log_path, ignore_errors=True)
@@ -65,7 +65,6 @@ def test_configure_file_name():
 
 def test_update_filenames():
     from felling.src.configure_felling import _update_filenames
-    import re
 
     config = {"handlers": {"file_handler": {"filename": "NOT A FILENAME"}}}
     log_path = Path("./logs")
@@ -102,14 +101,12 @@ def test_log_versions_one_package():
 def test_log_versions_multiple_package():
     from felling.src.configure_felling import _log_versions
     import felling
-    import re
 
     assert _log_versions((felling, re)) is None
 
 
 def test_log_versions_invalid_package():
     from felling.src.configure_felling import _log_versions
-    import os
 
     with pytest.raises(
         AttributeError, match="module 'os' has no attribute '__version__'"
@@ -126,7 +123,6 @@ def test_log_versions_other_error():
 
 def test_specific_modules_one_module_error_only():
     from felling.src.configure_felling import _specific_modules
-    import re
 
     config = {"loggers": {"ERROR only": "ERROR only handler"}}
     config = _specific_modules(config, re, "ERROR")
@@ -135,8 +131,6 @@ def test_specific_modules_one_module_error_only():
 
 def test_specific_modules_multiple_module_error_only():
     from felling.src.configure_felling import _specific_modules
-    import re
-    import os
 
     config = {"loggers": {"ERROR only": "ERROR only handler"}}
     config = _specific_modules(config, [re, os], "ERROR")
@@ -146,7 +140,6 @@ def test_specific_modules_multiple_module_error_only():
 
 def test_specific_modules_one_module_debug_only():
     from felling.src.configure_felling import _specific_modules
-    import re
 
     config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
     config = _specific_modules(config, re, "DEBUG")
@@ -155,8 +148,6 @@ def test_specific_modules_one_module_debug_only():
 
 def test_specific_modules_multiple_module_debug_only():
     from felling.src.configure_felling import _specific_modules
-    import re
-    import os
 
     config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
     config = _specific_modules(config, [re, os], "DEBUG")
