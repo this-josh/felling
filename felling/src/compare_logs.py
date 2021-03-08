@@ -8,7 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 def parse_args(cli_arguments):
-    # from difflib import get_close_matches
 
     parser = argparse.ArgumentParser(description="Compare two log files")
     parser.add_argument(
