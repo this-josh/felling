@@ -107,9 +107,7 @@ def test_log_versions_multiple_package():
 def test_log_versions_invalid_package():
     from felling.src.configure_felling import _log_versions
 
-    with pytest.raises(
-        AttributeError, match="module 'os' has no attribute '__version__'"
-    ):
+    with pytest.raises(AttributeError):
         assert _log_versions(os) is None
 
 
