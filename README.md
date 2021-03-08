@@ -16,6 +16,8 @@ felling.configure()
 # Done!
 ```
 
+## Issues
+
 If you find any bugs/have any request, please feel free to add a GitHub ticket. It’s only through your ideas that felling can reach its full potential.
 
 ## Usage
