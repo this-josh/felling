@@ -101,7 +101,7 @@ def test_log_versions_multiple_package():
     from felling.src.configure_felling import _log_versions
     import felling
 
-    assert _log_versions((felling, re)) is None
+    assert _log_versions([felling, re]) is None
 
 
 def test_log_versions_invalid_package():
