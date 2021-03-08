@@ -72,7 +72,9 @@ def _log_versions(packages_to_log: Optional[Union[Sequence[ModuleType], ModuleTy
                 f"Package {pack.__name__} has version number {pack.__version__}"
             )
         else:
-            raise AttributeError( f"Failed to log {pack} version, as the package doesn't have a __name__ and __version__")
+            raise AttributeError(
+                f"Failed to log {pack} version, as the package doesn't have a __name__ and __version__"
+            )
 
 
 def _specific_modules(

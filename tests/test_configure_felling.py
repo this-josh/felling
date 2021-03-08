@@ -3,7 +3,9 @@ import re
 from pathlib import Path
 import shutil
 import pytest
+
 str_log_path = "./tests/logs"
+
 
 def test_configure_default_path():
     """Quick sanity check test"""

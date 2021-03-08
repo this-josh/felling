@@ -1,7 +1,8 @@
 from felling import configure
 import logging
 import random
-configure('./tests/sample_logs')
+
+configure("./tests/sample_logs")
 logger = logging.getLogger(__name__)
 logger.info("Ash")
 
