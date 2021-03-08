@@ -6,7 +6,9 @@
 [![PyPI Latest Release](https://img.shields.io/pypi/v/felling.svg)](https://pypi.org/project/felling/)[![License](https://img.shields.io/github/license/this-josh/felling)](https://github.com/this-josh/felling/blob/main/LICENSE)[![Python package](https://github.com/this-josh/felling/actions/workflows/python-package.yml/badge.svg?branch=main)](https://github.com/this-josh/felling/actions/workflows/python-package.yml)[![Coverage](https://codecov.io/github/this-josh/felling/coverage.svg?branch=main)](https://codecov.io/gh/this-josh/felling)[![Issues](https://img.shields.io/github/issues/this-josh/felling)](https://github.com/this-josh/felling/issues)[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/this-josh/felling.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/this-josh/felling/context:python)[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 
-Felling easily improves repeatability and debugging of code by always initially logging some runtime metadata and ensuring logs are always written to a file
+Felling easily improves repeatability and debugging of code by always initially logging some runtime metadata and ensuring logs are always written to a file in an easy to read format.
+
+## Example usage
 
 ```python
 import felling
@@ -87,7 +89,7 @@ By default this disables all logs of level critical and lower, felling is capabl
 For repeatability it can be useful to have some metadata about each run time. When configuring felling it will log:
 
 1. The users username
-2. The most recent git commit hash for `__main__`s repo, its fine if it isn’t a git repo.
+2. The most recent git commit hash for `__main__`'s repo, its fine if it isn’t a git repo.
 3. The git remote status from `git remote show origin`
 
 ### `log_path`
@@ -97,7 +99,7 @@ import felling
 felling.configure(log_path = './logs')
 ```
 
-When configuring a `pathlib.Path` or a `str` path can be provide as the directory to save logs to.
+When configuring a `pathlib.Path` or a `str` path can be provide as the directory to save logs to, if none is provided `'./logs'` will be used
 
 ### `log_file_name`
 
@@ -106,7 +108,7 @@ import felling
 felling.configure(log_file_name = 'logs_for_foo')
 ```
 
-When configuring a custom file name for the log file can be passed
+When configuring, a custom log file name can be passed
 
 ### `file_log_level` and `std_log_level`
 
@@ -146,7 +148,7 @@ import pandas
 felling.configure(package_versions_to_log = pandas)
 ```
 
-For repeatability it can be helpful to log package versions, packages past to `package_versions_to_log` will have their version numbers logged while running initial logs
+For repeatability it can be helpful to log package versions, packages passed to `package_versions_to_log` will have their version numbers logged while running initial logs
 
 ### Comparing log files
 
@@ -159,7 +161,7 @@ Have you refactored some code? Do you not have 100% test coverage? Of course not
 The following script will run the comparison.
 
 ```shell
-python -m felling {str_to_first_log_file} {str_to_second_log_file}
+python -m felling {str_to_first_log_file} {str_to_second_log_file} [-v]
 ```
 
 If all is identical it’ll let you know, otherwise it will print the first 100 differences. If you’d like more than 100 differences pass `-v`
@@ -168,7 +170,7 @@ If all is identical it’ll let you know, otherwise it will print the first 100 
 
 > Simple is better than complex.
 
-​	*``python -c import this ` - Tim Peters*
+​	*`python -c import this ` - Tim Peters*
 
-Wherever possible I try to keep `felling` as simple as possible, for now I am proud it is requirements free. A lot of the difficulty in setting this up has been gathering an understanding of logging in python and the initial setup of logging.json. 
+Wherever possible `felling` will be kept as simple as possible, for now I am proud it is requirements free. A lot of the difficulty in setting this up has been gathering an understanding of logging in Python and the initial setup of logging.json. 
 
