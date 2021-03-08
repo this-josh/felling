@@ -70,7 +70,6 @@ def test_update_filenames():
     config = {"handlers": {"file_handler": {"filename": "NOT A FILENAME"}}}
     log_path = Path("./logs")
     log_file_name = "test_file_name"
-    expected_path = log_path / (log_file_name + ".log")
     config = _update_filenames(config, log_file_name, log_path)
     assert (
         re.match(
