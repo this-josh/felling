@@ -42,14 +42,19 @@ def _update_filenames(
 
     return config
 
+
 def _initial_logs():
     """write some initial logs"""
     logger.info(f"Username: {getpass.getuser()}")
-    logger.info(f"Most recent git commit hash: {subprocess.getoutput('git rev-parse HEAD')} ")
-    logger.info(f"Git remote and branch info: {subprocess.getoutput('git remote show origin')}")
+    logger.info(
+        f"Most recent git commit hash: {subprocess.getoutput('git rev-parse HEAD')} "
+    )
+    logger.info(
+        f"Git remote and branch info: {subprocess.getoutput('git remote show origin')}"
+    )
 
 
-def _log_versions(packages_to_log: Optional[List[ModuleType]]):
+def _log_versions(packages_to_log: Optional[Union[Sequence[ModuleType], ModuleType]]):
     """Use this to log which version of dependent packages are being used"""
     if packages_to_log is None:
         return
@@ -110,8 +115,8 @@ def configure(
     log_file_name: Optional[str] = None,
     file_log_level: Optional[str] = "DEBUG",
     std_out_log_level: Optional[str] = "INFO",
-    error_only_modules: Optional[Union[str, Sequence[str]]] = None,
-    modules_to_debug: Optional[str] = None,
+    error_only_modules: Optional[Union[ModuleType, Sequence[ModuleType]]] = None,
+    modules_to_debug: Optional[Union[ModuleType, Sequence[ModuleType]]] = None,
     package_versions_to_log: Optional[Union[ModuleType, List[ModuleType]]] = None,
 ):
     """
@@ -127,9 +132,9 @@ def configure(
         The minimum log level to write to file, by default "DEBUG"
     std_out_log_level : Optional[str], optional
         The minimum log level to write to std out, by default "INFO"
-    error_only_modules : Optional[Union[str, Sequence[str]]], optional
+    error_only_modules : Optional[Union[ModuleType, Sequence[ModuleType]]], optional
         Modules to only log errors, by default None
-    modules_to_debug : Optional[str], optional
+    modules_to_debug : Optional[Union[ModuleType, Sequence[ModuleType]]], optional
         Modules to log debug logs, by default None
     package_versions_to_log : Optional[ModuleType], optional
         Packages to log versions for, by default None
