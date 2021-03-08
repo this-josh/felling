@@ -42,37 +42,11 @@ def _update_filenames(
 
     return config
 
-
-def _get_git_commit_hash() -> str:
-    """Get the most recent git commit hash"""
-    try:
-        return (
-            subprocess.check_output(["git", "rev-parse", "HEAD"])
-            .decode("UTF-8")
-            .strip()
-        )
-    except subprocess.CalledProcessError as e:
-        logger.error(str(e))
-        return "Failed to read git commit hash."
-    except Exception as e:
-        logger.exception(f"Unexpected error when trying to get git commit hash")
-
-
-def _get_git_branch_and_remote():
-    """Get information about the git branch and remote"""
-    try:
-        return subprocess.check_output(["git", "remote", "show", "origin"]).decode(
-            "UTF-8"
-        )
-    except subprocess.CalledProcessError:
-        logger.error("Failed to get remote git info. Does your repo have a remote?")
-
-
 def _initial_logs():
     """write some initial logs"""
     logger.info(f"Username: {getpass.getuser()}")
-    logger.info(f"Most recent git commit hash: {_get_git_commit_hash()}")
-    logger.info(f"Git remote and branch info: {_get_git_branch_and_remote()}")
+    logger.info(f"Most recent git commit hash: {subprocess.getoutput('git rev-parse HEAD')} ")
+    logger.info(f"Git remote and branch info: {subprocess.getoutput('git remote show origin')}")
 
 
 def _log_versions(packages_to_log: Optional[List[ModuleType]]):
@@ -82,21 +56,19 @@ def _log_versions(packages_to_log: Optional[List[ModuleType]]):
     if isinstance(packages_to_log, ModuleType):
         packages_to_log = [packages_to_log]
     try:
-        for pack in packages_to_log:
-            try:
-                logger.info(
-                    f"Package {pack.__name__} has version number {pack.__version__}"
-                )
-            except AttributeError as e:
-                logger.info(f"Failed to log {pack} version, {e}")
-            except Exception as e:
-                logger.exception(e.args)
-                logger.info(f"{pack} version will not be logged.")
+        iter(packages_to_log)
     except TypeError as e:
         logger.exception(e.args)
-        logger.info(f"packages_to_log = {packages_to_log} and is not iterable")
-    except Exception as e:
-        logger.exception(f"Failed to log packages, {packages_to_log}")
+        logger.error(f"packages_to_log = {packages_to_log} and is not iterable")
+        raise
+    for pack in packages_to_log:
+        try:
+            logger.info(
+                f"Package {pack.__name__} has version number {pack.__version__}"
+            )
+        except AttributeError as e:
+            logger.error(f"Failed to log {pack} version, {e}")
+            raise
 
 
 def _specific_modules(

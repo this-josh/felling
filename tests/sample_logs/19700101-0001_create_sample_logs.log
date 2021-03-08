@@ -1,0 +1,160 @@
+1970-01-01 00:00:00 - Initial logs - INFO - configure_felling._initial_logs - on line 73 - Username: Ash - /Users/Ash
+1970-01-01 00:00:00 - Initial logs - INFO - configure_felling._initial_logs - on line 74 - Most recent git commit hash: 0000000000000000000000000000000000000000 - /Users/Ash
+1970-01-01 00:00:00 - Initial logs - INFO - configure_felling._initial_logs - on line 75 - Git remote and branch info: * remote origin
+  Fetch URL: https://github.com/this-josh/felling.git
+  Push  URL: https://github.com/this-josh/felling.git
+  HEAD branch: main
+  Remote branches:
+    develop tracked
+    main    tracked
+  Local branches configured for 'git pull':
+    develop merges with remote develop
+    main    merges with remote main
+  Local refs configured for 'git push':
+    develop pushes to develop (up to date)
+    main    pushes to main    (up to date)
+ - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 6 - Ash - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 3 has randomly been chosen. - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 11 - 3 squared is 9 - /Users/Ash
+1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 13 - 3 + 10 is 9 - /Users/Ash
