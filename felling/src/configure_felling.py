@@ -67,13 +67,12 @@ def _log_versions(packages_to_log: Optional[Union[Sequence[ModuleType], ModuleTy
         logger.error(f"packages_to_log = {packages_to_log} and is not iterable")
         raise
     for pack in packages_to_log:
-        try:
+        if hasattr(pack, "__name__") and hasattr(pack, "__version__"):
             logger.info(
                 f"Package {pack.__name__} has version number {pack.__version__}"
             )
-        except AttributeError as e:
-            logger.error(f"Failed to log {pack} version, {e}")
-            raise
+        else:
+            raise AttributeError( f"Failed to log {pack} version, as the package doesn't have a __name__ and __version__")
 
 
 def _specific_modules(
