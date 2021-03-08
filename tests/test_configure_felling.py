@@ -3,19 +3,18 @@ import re
 from pathlib import Path
 import shutil
 import pytest
-
+str_log_path = "./tests/logs"
 
 def test_configure_default_path():
     """Quick sanity check test"""
     from felling.src.configure_felling import configure
 
-    log_path = "./tests/logs"
-    shutil.rmtree(log_path, ignore_errors=True)
+    shutil.rmtree(str_log_path, ignore_errors=True)
 
     configure()
 
-    assert len(os.listdir(log_path)) == 1
-    shutil.rmtree(log_path)
+    assert len(os.listdir(str_log_path)) == 1
+    shutil.rmtree(str_log_path)
 
 
 def test_configure_str_path():
@@ -48,7 +47,7 @@ def test_configure_file_name():
     """Check custom file names are working"""
     from felling.src.configure_felling import configure
 
-    log_path = Path("./tests/logs")
+    log_path = Path(str_log_path)
     shutil.rmtree(log_path, ignore_errors=True)
     file_name = "test_log"
     configure(log_path, log_file_name=file_name)
