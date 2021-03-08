@@ -8,7 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 def parse_args(cli_arguments):
-    # from difflib import get_close_matches
 
     parser = argparse.ArgumentParser(description="Compare two log files")
     parser.add_argument(
@@ -113,14 +112,9 @@ def find_differences(
         )
         max_lines = min((len(f1_log_messages), len(f2_log_messages)))
     else:
-        max_lines = None
+        max_lines = len(f1_log_messages)
 
-    for log_number in range(len(f1_log_messages)):
-        if max_lines is not None and log_number >= max_lines:
-            print(
-                f"Reached line number {log_number} which is the length of the shorter log file, will stop looking for differences."
-            )
-            break
+    for log_number in range(max_lines):
         if f1_log_messages[log_number] != f2_log_messages[log_number]:
             num_differences += 1
             if to_print:
