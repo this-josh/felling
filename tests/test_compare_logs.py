@@ -66,7 +66,7 @@ def test_tidy_logs():
         "Identical logs, more verbose",
         "Different logs, less verbose",
         "Different logs, more verbose",
-        "Different length logs, les verbose",
+        "Different length logs, less verbose",
         "Different length logs, more verbose",
     ],
 )
