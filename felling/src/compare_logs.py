@@ -114,7 +114,7 @@ def find_differences(
     else:
         max_lines = len(f1_log_messages)
 
-    for log_number in range(len(f1_log_messages), max_lines):
+    for log_number in range(max_lines):
         if f1_log_messages[log_number] != f2_log_messages[log_number]:
             num_differences += 1
             if to_print:
