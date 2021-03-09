@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-import versioneer
 
 project_urls = {
     "Source": "https://github.com/this-josh/felling",
@@ -30,6 +29,4 @@ setup(
     keywords="logging logs log",
     license="MIT",
     python_requires=">=3.6",
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
 )
