@@ -22,7 +22,6 @@ setup(
     author="Josh Kirk",
     author_email="felling@joshkirk.co.uk",
     packages=find_packages(),
-    package_data={"": ["*.json"]},
     url="https://github.com/this-josh/felling",
     long_description=long_description,
     long_description_content_type="text/markdown",
