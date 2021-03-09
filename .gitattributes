@@ -1,3 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 felling/_version.py export-subst
+.git_archival.txt  export-subst
