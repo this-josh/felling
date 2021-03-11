@@ -127,3 +127,4 @@ dmypy.json
 log_env/
 .vscode/
 /sample_logs/
+/felling/version.py
