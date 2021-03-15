@@ -5,7 +5,7 @@ project_urls = {
     "Tracker": "https://github.com/this-josh/felling/issues",
 }
 
-with open("README.md", "r") as f:
+with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 classifiers = [
