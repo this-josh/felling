@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-import versioneer
 
 project_urls = {
     "Source": "https://github.com/this-josh/felling",
@@ -23,6 +22,7 @@ setup(
     author="Josh Kirk",
     author_email="felling@joshkirk.co.uk",
     packages=find_packages(),
+    include_package_data=True,
     package_data={"": ["*.json"]},
     url="https://github.com/this-josh/felling",
     long_description=long_description,
@@ -30,6 +30,4 @@ setup(
     keywords="logging logs log",
     license="MIT",
     python_requires=">=3.6",
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
 )

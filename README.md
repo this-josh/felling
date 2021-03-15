@@ -176,3 +176,6 @@ If all is identical it’ll let you know, otherwise it will print the first 100 
 
 Wherever possible `felling` will be kept as simple as possible, for now I am proud it is requirements free. A lot of the difficulty in setting this up has been gathering an understanding of logging in Python and the initial setup of logging.json. 
 
+
+## Other advantages:
+*   If you have too many print statement you'll lose them in your stdout but still have them in a log file
