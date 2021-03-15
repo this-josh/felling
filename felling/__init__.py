@@ -6,6 +6,8 @@ from felling.src.configure_felling import configure
 __name__ = "felling"
 
 
+print("In felling __init__")
+
 # Felling supports multiple python versions which required different methods of getting the version
 try:
     from importlib.metadata import version as version_getter
