@@ -13,11 +13,6 @@ try:
 except ModuleNotFoundError:
     from pkg_resources import get_distribution as version_getter
     from pkg_resources import DistributionNotFound as NoPackageError
-except Exception:
-    # This should never happen
-    raise ModuleNotFoundError(
-        "Neither importlib nor pkg_resources are installed, cannot log felling version"
-    )
 
 try:
     __version__ = version_getter("felling")
