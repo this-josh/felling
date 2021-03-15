@@ -10,9 +10,11 @@ __name__ = "felling"
 try:
     from importlib.metadata import version as version_getter
     from importlib.metadata import PackageNotFoundError as NoPackageError
+    print("importlib")
 except ModuleNotFoundError:
     from pkg_resources import get_distribution as version_getter
     from pkg_resources import DistributionNotFound as NoPackageError
+    print("pkg_resources")
 
 try:
     __version__ = version_getter("felling")
