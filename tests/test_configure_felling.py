@@ -170,9 +170,6 @@ def test_specific_modules_multiple_str_module():
 
 
 def test_logging_disabled():
-    if os.path.isdir(str_log_path):
-        print(list(os.walk(str_log_path)))
-
     from felling.src.configure_felling import configure
     import sys
 
@@ -182,14 +179,7 @@ def test_logging_disabled():
     else:
         logging.disable()
 
-    if os.path.isdir(str_log_path):
-        print(list(os.walk(str_log_path)))
-        shutil.rmtree(str_log_path)
-
-    if os.path.isdir(str_log_path):
-        print(list(os.walk(str_log_path)))
+    shutil.rmtree(str_log_path, ignore_errors=True)
 
     configure()
-    if os.path.isdir(str_log_path):
-        print(list(os.walk(str_log_path)))
     assert os.path.isdir(str_log_path) is False
