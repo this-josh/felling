@@ -179,8 +179,7 @@ def test_logging_disabled():
     else:
         logging.disable()
 
-    log_path = "./tests/logs"
-    shutil.rmtree(log_path, ignore_errors=True)
+    shutil.rmtree(str_log_path, ignore_errors=True)
 
     configure()
     assert os.path.isdir(log_path) is False
