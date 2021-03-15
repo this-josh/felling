@@ -17,7 +17,7 @@ def test_configure_default_path():
     configure()
 
     assert len(os.listdir(str_log_path)) == 1
-    shutil.rmtree(str_log_path)
+    shutil.rmtree(str_log_path, ignore_errors=True)
 
 
 def test_configure_str_path():
@@ -30,7 +30,7 @@ def test_configure_str_path():
     configure(log_path)
 
     assert len(os.listdir(log_path)) == 1
-    shutil.rmtree(log_path)
+    shutil.rmtree(log_path, ignore_errors=True)
 
 
 def test_configure_pathlib_path():
@@ -43,7 +43,7 @@ def test_configure_pathlib_path():
     configure(log_path)
 
     assert len(os.listdir(log_path)) == 1
-    shutil.rmtree(log_path)
+    shutil.rmtree(log_path, ignore_errors=True)
 
 
 def test_configure_file_name():
@@ -62,7 +62,7 @@ def test_configure_file_name():
         is not None
     )
 
-    shutil.rmtree(log_path)
+    shutil.rmtree(log_path, ignore_errors=True)
 
 
 def test_update_filenames():
