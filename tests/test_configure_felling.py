@@ -184,3 +184,4 @@ def test_logging_disabled():
 
     configure()
     assert os.path.isdir(log_path) is False
+    assert os.path.isdir(str_log_path) is False
