@@ -93,15 +93,23 @@ def test_log_versions_no_package():
 
 
 def test_log_versions_one_package():
-    from felling.src.configure_felling import _log_versions
     import felling
+
+    print(f"felling version {felling.__version__}")
+    print(f"felling name {felling.__name__}")
+
+    from felling.src.configure_felling import _log_versions
 
     assert _log_versions(felling) is None
 
 
 def test_log_versions_multiple_package():
-    from felling.src.configure_felling import _log_versions
     import felling
+
+    print(f"felling version {felling.__version__}")
+    print(f"felling name {felling.__name__}")
+
+    from felling.src.configure_felling import _log_versions
 
     assert _log_versions([felling, re]) is None
 
