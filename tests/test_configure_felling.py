@@ -170,6 +170,9 @@ def test_specific_modules_multiple_str_module():
 
 
 def test_logging_disabled():
+    if os.path.isdir(str_log_path):
+        print(list(os.walk(str_log_path)))
+
     from felling.src.configure_felling import configure
     import sys
 
