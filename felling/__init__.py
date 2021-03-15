@@ -15,6 +15,8 @@ except ModuleNotFoundError:
     from pkg_resources import get_distribution as version_getter
     from pkg_resources import DistributionNotFound as NoPackageError
     print("pkg_resources")
+except:
+    raise ModuleNotFoundError("Neither importlib nor pkg_resources are installed")
 
 try:
     __version__ = version_getter("felling")
