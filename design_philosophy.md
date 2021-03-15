@@ -9,3 +9,6 @@
 
 ## Tests
 *   As felling is intended to be used everywhere it must have comprehensive tests
+
+## Example names
+*   Wherever possible try to use tree species as example names, such as: Ash, Birch, Willow
