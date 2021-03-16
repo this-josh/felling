@@ -27,6 +27,9 @@ def send_email(
         subject = "No subject or content provided."
         content = subject
 
+    if not isinstance(smtp_server, str):
+        raise TypeError(f"smtp_server must be a str, not type {type(smtp_server)}")
+
     message = MIMEMultipart("alt")
     # message.set_content(content)
     message["Subject"] = subject
