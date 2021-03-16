@@ -23,7 +23,7 @@ def send_email(
         subject = content[:30]
     elif subject is not None and content is None:
         content = subject
-    else:
+    elif subject is None and content is None:
         subject = "No subject or content provided."
         content = subject
 
