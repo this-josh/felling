@@ -1,3 +1,4 @@
+from email import message
 import pytest
 
 
@@ -48,3 +49,19 @@ def test_send_email(sender, password, to, subject, content):
     from felling.src.email import send_email
 
     send_email(sender, password, to, subject, content, smtp_server="localhost")
+
+
+def test_send_email_smtp_server():
+    from felling.src.email import send_email
+
+    with pytest.raises(
+        TypeError, match="smtp_server must be a str, not type <class 'int'>"
+    ):
+        send_email(
+            "ash@birch.com",
+            "TreesRCool",
+            "willow@yew.com",
+            None,
+            None,
+            smtp_server=35930,
+        )
