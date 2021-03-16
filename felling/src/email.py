@@ -16,6 +16,30 @@ def send_email(
     content: Optional[str] = None,
     smtp_server: str = "Smtp.office365.com",
 ):
+    """
+    A method to easily send emails
+
+    Parameters
+    ----------
+    sender : str
+        The senders email address
+    password : str
+        The senders password, it is reccomended this is stored as an environment variable
+    to : Union[List[str], str]
+        The recipients as a list of strings or an individual string
+    subject : Optional[str], optional
+        The email subject, if none will try to infer from content, by default None
+    content : Optional[str], optional
+        The email content, if none will try to infer from subject. Html code can be provided, e.g. from pandas `to_html`, by default None
+    smtp_server : str, optional
+        The smtp_server to use, currently only tested on office365, by default "Smtp.office365.com"
+
+    Raises
+    ------
+    TypeError
+        If the smtp server is of incorrect type raise this error
+    """
+
     if isinstance(to, str):
         to = [to]
 
