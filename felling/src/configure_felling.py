@@ -79,7 +79,7 @@ def _log_versions(packages_to_log: Optional[Union[Sequence[ModuleType], ModuleTy
 
 def _specific_modules(
     config: Dict[str, Any],
-    modules: Optional[ Union[ModuleType, Sequence[ModuleType], str, Sequence[str]] ],
+    modules: Optional[Union[ModuleType, Sequence[ModuleType], str, Sequence[str]]],
     debug_or_error: str,
 ) -> Dict[str, Any]:
     """
@@ -110,9 +110,7 @@ def _specific_modules(
             else:
                 raise TypeError(f"module {module} must be a ModuleType or str.")
             logger.info(f"{name_to_use} will only have {debug_or_error} logged")
-            config["loggers"][name_to_use] = config["loggers"][
-                f"{debug_or_error} only"
-            ]
+            config["loggers"][name_to_use] = config["loggers"][f"{debug_or_error} only"]
     return config
 
 
