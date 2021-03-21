@@ -46,15 +46,6 @@ Features
 - Compare logs files to spot where your code is working differently to before
 - Easily send emails, for example emailing on errors
 
-Installation
-------------
-with pip:
-   ``pip install felling``
-
-with conda:
-   ``conda install -c conda-forge felling``
-
-
 
 Contribute
 ----------
