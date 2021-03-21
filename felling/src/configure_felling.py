@@ -66,6 +66,7 @@ def _log_versions(packages_to_log: Optional[Union[Sequence[ModuleType], ModuleTy
         logger.exception(e.args)
         logger.error(f"packages_to_log = {packages_to_log} and is not iterable")
         raise
+    assert not isinstance(packages_to_log, int)
     for pack in packages_to_log:
         if hasattr(pack, "__name__") and hasattr(pack, "__version__"):
             logger.info(
