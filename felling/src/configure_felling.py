@@ -79,7 +79,7 @@ def _log_versions(packages_to_log: Optional[Union[Sequence[ModuleType], ModuleTy
 
 def _specific_modules(
     config: Dict[str, Any],
-    modules: Optional[Union[ModuleType, Sequence[ModuleType]]],
+    modules: Optional[ Union[ModuleType, Sequence[ModuleType], str, Sequence[str]] ],
     debug_or_error: str,
 ) -> Dict[str, Any]:
     """
@@ -89,7 +89,7 @@ def _specific_modules(
     ----------
     config : Dict[str, Any]
         The config data
-    modules : Optional[Union[ModuleType, Sequence[ModuleType]]]
+    modules : Optional[ Union[ModuleType, Sequence[ModuleType], str, Sequence[str]] ]
         Modules to give handlers
     debug_or_error : str
         Must be either "ERROR" or "DEBUG", whether to give handlers for errors or debug
@@ -102,10 +102,14 @@ def _specific_modules(
     if modules is not None:
         modules = [modules] if isinstance(modules, ModuleType) else modules
         for module in modules:
-            if not isinstance(module, ModuleType):
-                raise TypeError(f"module {module} must be a ModuleType.")
-            logger.info(f"{module.__name__} will only have {debug_or_error} logged")
-            config["loggers"][module.__name__] = config["loggers"][
+            if isinstance(module, ModuleType):
+                name_to_use = module.__name__
+            elif isinstance(module, str):
+                name_to_use = module
+            else:
+                raise TypeError(f"module {module} must be a ModuleType or str.")
+            logger.info(f"{name_to_use} will only have {debug_or_error} logged")
+            config["loggers"][name_to_use] = config["loggers"][
                 f"{debug_or_error} only"
             ]
     return config
@@ -116,10 +120,14 @@ def configure(
     log_file_name: Optional[str] = None,
     file_log_level: Optional[str] = "DEBUG",
     std_out_log_level: Optional[str] = "INFO",
-    error_only_modules: Optional[Union[ModuleType, Sequence[ModuleType]]] = None,
-    modules_to_debug: Optional[Union[ModuleType, Sequence[ModuleType]]] = None,
+    error_only_modules: Optional[
+        Union[ModuleType, Sequence[ModuleType], str, Sequence[str]]
+    ] = None,
+    modules_to_debug: Optional[
+        Union[ModuleType, Sequence[ModuleType], str, Sequence[str]]
+    ] = None,
     package_versions_to_log: Optional[Union[ModuleType, List[ModuleType]]] = None,
-):
+)    
     """
     Configure logging for this run time
 
@@ -133,10 +141,10 @@ def configure(
         The minimum log level to write to file, by default "DEBUG"
     std_out_log_level : Optional[str], optional
         The minimum log level to write to std out, by default "INFO"
-    error_only_modules : Optional[Union[ModuleType, Sequence[ModuleType]]], optional
-        Modules to only log errors, by default None
-    modules_to_debug : Optional[Union[ModuleType, Sequence[ModuleType]]], optional
-        Modules to log debug logs, by default None
+    error_only_modules : Optional[ Union[ModuleType, Sequence[ModuleType], str, Sequence[str]] ], optional
+        Modules to only log errors. If module(s) is provided __name__ will be used, if str(s) are provided they will be used, by default None
+    modules_to_debug : Optional[ Union[ModuleType, Sequence[ModuleType], str, Sequence[str]] ], optional
+        Modules to log debug logs. If module(s) is provided __name__ will be used, if str(s) are provided they will be used, by default None
     package_versions_to_log : Optional[ModuleType], optional
         Packages to log versions for, by default None
     """
