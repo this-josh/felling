@@ -14,4 +14,4 @@ formats:
 python:
    version: 3.8
    install:
-   - requirements: setup.py
+   - requirements: docs/requirements.txt
