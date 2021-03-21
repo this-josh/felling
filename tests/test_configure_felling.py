@@ -169,6 +169,13 @@ def test_specific_modules_multiple_str_module():
     assert config["loggers"]["Ash"] == "DEBUG only handler"
     assert config["loggers"]["Birch"] == "DEBUG only handler"
 
+def test_specific_modules_invalid_type():
+    from felling.src.configure_felling import _specific_modules
+
+    config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
+    with pytest.raises(TypeError, match='module 5 must be a ModuleType or str.'):
+        _specific_modules(config, 5, "DEBUG")
+
 
 def test_logging_disabled():
     from felling.src.configure_felling import configure
