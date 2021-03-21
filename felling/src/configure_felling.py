@@ -169,7 +169,14 @@ def configure(
         # Ironically print as logs are not yet set up
         # TODO: set up simple config?
         logger.warning(f"Log path does not exist, will create {log_path.absolute()}")
-        log_path.mkdir()
+        try:
+            log_path.mkdir()
+        except PermissionError as e:
+            print(
+                f"Runtime does not have correct permissions to create a log dir, felling cannot configure"
+            )
+            print(e)
+            return
 
     # read in logger config
     with open(

@@ -191,3 +191,20 @@ def test_logging_disabled():
 
     configure()
     assert os.path.isdir(str_log_path) is False
+
+
+def test_permission_error():
+    from felling.src.configure_felling import configure
+
+    class PermissionErrorRaisor:
+        def is_dir(self):
+            return False
+
+        def absolute(self):
+            return "Oak"
+
+        def mkdir(self):
+            raise PermissionError
+
+    fake_log_path = PermissionErrorRaisor()
+    configure(log_path=fake_log_path)
