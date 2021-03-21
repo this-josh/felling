@@ -19,6 +19,8 @@ def send_email(
     """
     A method to easily send emails
 
+    If the email fails to send the error is logged be and error isn't raised
+
     Parameters
     ----------
     sender : str
