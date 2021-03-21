@@ -18,7 +18,8 @@ Felling easily improves repeatability and debugging of code by always initially 
 Installation and example usage
 ------------------------------
 
-**Installation**  
+Installation
+~~~~~~~~~~~~
 
 with pip:
    ``pip install felling``
@@ -27,7 +28,8 @@ with conda:
    ``conda install -c conda-forge felling``
 
 
-**Example usage**
+Example usage
+~~~~~~~~~~~~~
 
 .. code-block:: python
 
