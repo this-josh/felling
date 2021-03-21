@@ -24,7 +24,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data={"": ["*.json"]},
-    url="https://github.com/this-josh/felling",
+    url="https://felling.readthedocs.io/en/latest/",
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="logging logs log",
