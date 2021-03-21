@@ -22,5 +22,5 @@ except NoPackageError:
 
 
 __doc__ = """
-Add a module level docstring, see pandas
+Felling is a package which helps with logging
 """
