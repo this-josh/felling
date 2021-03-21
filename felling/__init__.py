@@ -19,3 +19,8 @@ try:
     __version__ = version_getter("felling")
 except NoPackageError:
     pass
+
+
+__doc__ = """
+Add a module level docstring, see pandas
+"""
