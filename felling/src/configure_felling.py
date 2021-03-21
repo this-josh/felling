@@ -128,7 +128,7 @@ def configure(
         Union[ModuleType, Sequence[ModuleType], str, Sequence[str]]
     ] = None,
     package_versions_to_log: Optional[Union[ModuleType, List[ModuleType]]] = None,
-)    
+):
     """
     Configure logging for this run time
 
