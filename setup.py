@@ -25,7 +25,7 @@ setup(
     include_package_data=True,
     package_data={"": ["*.json"]},
     url="https://felling.readthedocs.io/en/latest/",
-    project_urls=project_urls
+    project_urls=project_urls,
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="logging logs log",
