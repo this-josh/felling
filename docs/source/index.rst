@@ -9,14 +9,31 @@ Welcome to felling's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   felling
+
 
 Felling easily improves repeatability and debugging of code by always initially logging some runtime metadata and ensuring logs are always written to a file in an easy to read format.
 
+Installation and example usage
+------------------------------
+
+**Installation**  
+
+with pip:
+   ``pip install felling``
+
+with conda:
+   ``conda install -c conda-forge felling``
+
+
 **Example usage**
 
-``import felling
-felling.configure()
-# Done!``
+.. code-block:: python
+
+   import felling  
+   felling.configure()  
+   # Done! 
 
 Features
 --------
