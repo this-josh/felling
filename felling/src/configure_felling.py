@@ -101,6 +101,7 @@ def _specific_modules(
     """
     if modules is not None:
         modules = [modules] if isinstance(modules, ModuleType) else modules
+        modules = [modules] if isinstance(modules, str) else modules
         for module in modules:
             if isinstance(module, ModuleType):
                 name_to_use = module.__name__
