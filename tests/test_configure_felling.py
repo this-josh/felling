@@ -157,16 +157,17 @@ def test_specific_modules_single_str_module():
     from felling.src.configure_felling import _specific_modules
 
     config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
-    with pytest.raises(TypeError, match="module A must be a ModuleType.") as e:
-        _specific_modules(config, "Ash", "DEBUG")
+    config = _specific_modules(config, "Ash", "DEBUG")
+    assert config["loggers"]["Ash"] == "DEBUG only handler"
 
 
 def test_specific_modules_multiple_str_module():
     from felling.src.configure_felling import _specific_modules
 
     config = {"loggers": {"DEBUG only": "DEBUG only handler"}}
-    with pytest.raises(TypeError, match="module Ash must be a ModuleType.") as e:
-        _specific_modules(config, ["Ash", "Birch"], "DEBUG")
+    config = _specific_modules(config, ["Ash", "Birch"], "DEBUG")
+    assert config["loggers"]["Ash"] == "DEBUG only handler"
+    assert config["loggers"]["Birch"] == "DEBUG only handler"
 
 
 def test_logging_disabled():
