@@ -62,7 +62,7 @@ def send_email(
     content = MIMEText(content, "html")
     message.attach(content)
 
-    context = ssl.SSLContext()
+    context = ssl.SSLContext(protocol=ssl.PROTOCOL_TLS)
     try:
         with smtplib.SMTP(smtp_server, port=25) as smtp:
             smtp.starttls(context=context)
