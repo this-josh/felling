@@ -100,7 +100,7 @@ def _specific_modules(
         The modified config data
     """
     if modules is not None:
-        modules = [modules] if isinstance(modules, ModuleType) else modules
+        modules = [modules] if not isinstance(modules, Sequence) else modules
         modules = [modules] if isinstance(modules, str) else modules
         for module in modules:
             if isinstance(module, ModuleType):
