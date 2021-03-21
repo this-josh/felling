@@ -19,3 +19,8 @@ try:
     __version__ = version_getter("felling")
 except NoPackageError:
     pass
+
+
+__doc__ = """
+Felling is a package which helps with logging
+"""
