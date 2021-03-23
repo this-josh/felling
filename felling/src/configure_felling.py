@@ -103,6 +103,8 @@ def _specific_modules(
     if modules is not None:
         modules = [modules] if not isinstance(modules, Sequence) else modules
         modules = [modules] if isinstance(modules, str) else modules
+        assert isinstance(modules, Sequence)
+
         for module in modules:
             if isinstance(module, ModuleType):
                 name_to_use = module.__name__
