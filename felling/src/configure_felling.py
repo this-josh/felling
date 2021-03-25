@@ -105,7 +105,7 @@ def _specific_modules(
         modules = [modules] if isinstance(modules, str) else modules
         assert isinstance(modules, Sequence)
 
-        for module in modules: # lgtm [py/non-iterable-in-for-loop]
+        for module in modules:  # lgtm [py/non-iterable-in-for-loop]
             if isinstance(module, ModuleType):
                 name_to_use = module.__name__
             elif isinstance(module, str):
