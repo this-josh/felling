@@ -30,6 +30,51 @@ def check_email_address(email_to_check: str):
         raise ValueError(f"{email_to_check} is not a valid email address")
 
 
+def _get_sender_and_password(
+    sender: Optional[str], password: Optional[str]
+) -> Tuple[str, str]:
+    """
+    Get the sender email address and password
+
+    Parameters
+    ----------
+    sender : Optional[str]
+        Sender email address provided
+    password : Optional[str]
+        Sender email password provided
+
+    Returns
+    -------
+    Tuple[str, str]
+        The sender email address and password
+
+    Raises
+    ------
+    ValueError
+        If the sender email address cannot be determined
+    ValueError
+        If the sender password cannot be determined
+    """
+    if sender is None:
+        sender = os.getenv("felling_email_sender")
+        if sender is None:
+            raise ValueError(
+                f"No sender email was provided to send_email and the environment variable is {sender}"
+            )
+        logger.info(f"Got {sender} from environment variable felling_email_sender")
+
+    check_email_address(sender)
+
+    if password is None:
+        password = os.getenv("felling_email_password")
+        if password is None:
+            raise ValueError(
+                f"No sender password was provided to send_email and the environment variable is None"
+            )
+
+    return sender, password
+
+
 def send_email(
     to: Union[List[str], str],
     sender: Optional[str] = None,
