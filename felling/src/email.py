@@ -9,9 +9,9 @@ logger = logging.getLogger(__name__)
 
 
 def send_email(
-    sender: str,
-    password: str,
     to: Union[List[str], str],
+    sender: Optional[str] = None,
+    password: Optional[str] = None,
     subject: Optional[str] = None,
     content: Optional[str] = None,
     smtp_server: str = "Smtp.office365.com",
@@ -21,14 +21,19 @@ def send_email(
 
     If the email fails to send the error is logged be and error isn't raised
 
+    sender : Optional[str], optional
+        [description], by default None
+    password : Optional[str], optional
+        [description], by default None
+
     Parameters
     ----------
-    sender : str
-        The senders email address
-    password : str
-        The senders password, it is reccomended this is stored as an environment variable
     to : Union[List[str], str]
         The recipients as a list of strings or an individual string
+    sender : Optional[str], optional
+        The senders email address if None will look for the environment variable felling_email_sender, by default None
+    password : Optional[str], optional
+        The senders password, it is reccomended this is stored as an environment variable if None will look for the environment variable felling_email_password, by default None
     subject : Optional[str], optional
         The email subject, if none will try to infer from content, by default None
     content : Optional[str], optional

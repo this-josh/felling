@@ -3,35 +3,35 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    "sender,password,to,subject,content",
+    "to,sender,password,subject,content",
     (
-        ["ash@birch.com", "TreesRCool", "willow@yew.com", None, None],
+        ["willow@yew.com", "ash@birch.com", "TreesRCool", None, None],
         [
+            ["willow@yew.com", "elm@yew.com"],
             "ash@birch.com",
             "TreesRCool",
-            ["willow@yew.com", "elm@yew.com"],
             None,
             None,
         ],
-        [["ash@birch.com"], "TreesRCool", "willow@yew.com", None, None],
+        ["willow@yew.com", ["ash@birch.com"], "TreesRCool", None, None],
         [
+            "willow@yew.com",
             "ash@birch.com",
             "TreesRCool",
-            "willow@yew.com",
             None,
             "content is important",
         ],
         [
+            "willow@yew.com",
             "ash@birch.com",
             "TreesRCool",
-            "willow@yew.com",
             "subjects are useful",
             None,
         ],
         [
+            "willow@yew.com",
             "ash@birch.com",
             "TreesRCool",
-            "willow@yew.com",
             "subjects are useful",
             "content is important",
         ],
@@ -45,7 +45,11 @@ import pytest
         "str sender, one recipient, has subject and content",
     ],
 )
-def test_send_email(sender, password, to, subject, content):
+def test_send_email(to, sender, password, subject, content):
+    from felling.src.email import send_email
+
+    send_email(to, sender, password, subject, content, smtp_server="localhost")
+
     from felling.src.email import send_email
 
     send_email(sender, password, to, subject, content, smtp_server="localhost")
