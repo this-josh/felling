@@ -155,6 +155,7 @@ def send_email(
             smtp.starttls(context=context)
             smtp.login(message["From"], password)
             for recipient in to:
+                check_email_address(recipient)
                 message["To"] = recipient
                 smtp.sendmail(message["From"], recipient, message.as_string())
     except Exception as e:
