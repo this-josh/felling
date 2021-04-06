@@ -1,17 +1,84 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
-from typing import List, Optional, Union
+from typing import List, Optional, Sequence, Tuple, Union
 import ssl
+import os
+import re
 import logging
 
 logger = logging.getLogger(__name__)
 
 
+def check_email_address(email_to_check: str):
+    """
+    Check an email address is valid
+
+    Parameters
+    ----------
+    email_to_check : str
+        Email address to check
+
+    Raises
+    ------
+    ValueError
+        If the email address is not RFC_5322 compliant
+    """
+    RFC_5322_regex = r"""(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"""
+    match = re.match(RFC_5322_regex, email_to_check)
+    if match is None:
+        raise ValueError(f"{email_to_check} is not a valid email address")
+
+
+def _get_sender_and_password(
+    sender: Optional[str], password: Optional[str]
+) -> Tuple[str, str]:
+    """
+    Get the sender email address and password
+
+    Parameters
+    ----------
+    sender : Optional[str]
+        Sender email address provided
+    password : Optional[str]
+        Sender email password provided
+
+    Returns
+    -------
+    Tuple[str, str]
+        The sender email address and password
+
+    Raises
+    ------
+    ValueError
+        If the sender email address cannot be determined
+    ValueError
+        If the sender password cannot be determined
+    """
+    if sender is None:
+        sender = os.getenv("felling_email_sender")
+        if sender is None:
+            raise ValueError(
+                f"No sender email was provided to send_email and the environment variable is {sender}"
+            )
+        logger.info(f"Got {sender} from environment variable felling_email_sender")
+
+    check_email_address(sender)
+
+    if password is None:
+        password = os.getenv("felling_email_password")
+        if password is None:
+            raise ValueError(
+                f"No sender password was provided to send_email and the environment variable is None"
+            )
+
+    return sender, password
+
+
 def send_email(
-    sender: str,
-    password: str,
     to: Union[List[str], str],
+    sender: Optional[str] = None,
+    password: Optional[str] = None,
     subject: Optional[str] = None,
     content: Optional[str] = None,
     smtp_server: str = "Smtp.office365.com",
@@ -23,12 +90,12 @@ def send_email(
 
     Parameters
     ----------
-    sender : str
-        The senders email address
-    password : str
-        The senders password, it is reccomended this is stored as an environment variable
     to : Union[List[str], str]
         The recipients as a list of strings or an individual string
+    sender : Optional[str], optional
+        The senders email address if None will look for the environment variable felling_email_sender, by default None
+    password : Optional[str], optional
+        The senders password, it is reccomended this is stored as an environment variable if None will look for the environment variable felling_email_password, by default None
     subject : Optional[str], optional
         The email subject, if none will try to infer from content, by default None
     content : Optional[str], optional
@@ -44,6 +111,18 @@ def send_email(
 
     if isinstance(to, str):
         to = [to]
+    if not isinstance(sender, str) and isinstance(sender, Sequence):
+        if len(sender) == 1:
+            logger.info(
+                f"Sender has been passed as a sequence of len 1, will use the only item in the list sender = {sender}"
+            )
+            sender = sender[0]
+        else:
+            raise ValueError(
+                f"More than one sender has been provided, only sender address should be provided as a string. sender = {sender}"
+            )
+
+    sender, password = _get_sender_and_password(sender, password)
 
     if subject is None and content is not None:
         subject = content[:30]
@@ -71,6 +150,7 @@ def send_email(
             smtp.starttls(context=context)
             smtp.login(message["From"], password)
             for recipient in to:
+                check_email_address(recipient)
                 message["To"] = recipient
                 smtp.sendmail(message["From"], recipient, message.as_string())
     except Exception as e:
