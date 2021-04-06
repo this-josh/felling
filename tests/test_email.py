@@ -51,6 +51,18 @@ def test_send_email(to, sender, password, subject, content):
     send_email(to, sender, password, subject, content, smtp_server="localhost")
 
 
+def test_office_connections():
+    from felling.src.email import send_email
+
+    send_email(
+        "willow@yew.com",
+        "ash@birch.com",
+        "TreesRCool",
+        None,
+        None,
+    )
+
+
 def test_send_email_invalid():
     from felling.src.email import send_email
 
