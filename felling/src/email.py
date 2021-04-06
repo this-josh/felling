@@ -116,6 +116,18 @@ def send_email(
 
     if isinstance(to, str):
         to = [to]
+    if not isinstance(sender, str) and isinstance(sender, Sequence):
+        if len(sender) == 1:
+            logger.info(
+                f"Sender has been passed as a sequence of len 1, will use the only item in the list sender = {sender}"
+            )
+            sender = sender[0]
+        else:
+            raise ValueError(
+                f"More than one sender has been provided, only sender address should be provided as a string. sender = {sender}"
+            )
+
+    sender, password = _get_sender_and_password(sender, password)
 
     if subject is None and content is not None:
         subject = content[:30]
