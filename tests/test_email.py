@@ -62,9 +62,9 @@ def test_send_email_smtp_server():
         TypeError, match="smtp_server must be a str, not type <class 'int'>"
     ):
         send_email(
+            "willow@yew.com",
             "ash@birch.com",
             "TreesRCool",
-            "willow@yew.com",
             None,
             None,
             smtp_server=35930,
