@@ -155,7 +155,7 @@ def test_get_sender_and_password_valid_env():
     os.environ["felling_email_sender"] = "willow@yew.com"
     os.environ["felling_email_password"] = "TreesRCool"
 
-    _get_sender_and_password(None,None)
+    _get_sender_and_password(None, None)
 
 
 def test_get_sender_and_password_invalid_email():
@@ -165,8 +165,11 @@ def test_get_sender_and_password_invalid_email():
     os.environ.clear()
 
     os.environ["felling_email_password"] = "TreesRCool"
-    with pytest.raises(ValueError, match ="No sender email was provided to send_email and the environment variable is None"):
-        _get_sender_and_password(None,None)
+    with pytest.raises(
+        ValueError,
+        match="No sender email was provided to send_email and the environment variable is None",
+    ):
+        _get_sender_and_password(None, None)
 
 
 def test_get_sender_and_password_invalid_password():
@@ -176,5 +179,8 @@ def test_get_sender_and_password_invalid_password():
     os.environ.clear()
 
     os.environ["felling_email_sender"] = "willow@yew.com"
-    with pytest.raises(ValueError, match ="No sender password was provided to send_email and the environment variable is None"):
-        _get_sender_and_password(None,None)
+    with pytest.raises(
+        ValueError,
+        match="No sender password was provided to send_email and the environment variable is None",
+    ):
+        _get_sender_and_password(None, None)
