@@ -2,6 +2,8 @@ import logging
 from typing import List
 import re
 import argparse
+import pkg_resources
+import json
 
 # configure()
 logger = logging.getLogger(__name__)
@@ -158,3 +160,22 @@ def compare_log_file(file_1: str, file_2: str, verbose: int):
         )
     else:
         find_differences(f1_log_messages, f2_log_messages, verbose)
+
+
+def extract_log_message(log):
+    # read in logger config
+    with open(
+        pkg_resources.resource_filename("felling", "/resources/logger.json"), "rt"
+    ) as json_file:
+        config = json.load(json_file)
+
+    file_handler_level = config["handlers"]["file_handler"]["formatter"]
+    format = config["formatters"][file_handler_level]["format"]
+    datefmt = config["formatters"][file_handler_level]["datefmt"]
+
+    a = "1970-01-01 00:00:00 - __main__ - INFO - create_sample_logs.<module> - on line 9 - 5 has randomly been chosen. - /Users/Ash"
+
+    print(a)
+
+
+# extract_log_message()
