@@ -88,11 +88,6 @@ def send_email(
 
     If the email fails to send the error is logged be and error isn't raised
 
-    sender : Optional[str], optional
-        [description], by default None
-    password : Optional[str], optional
-        [description], by default None
-
     Parameters
     ----------
     to : Union[List[str], str]
