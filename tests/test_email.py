@@ -96,6 +96,35 @@ def test_send_email_smtp_server():
         )
 
 
+def test_send_email_mock_smtp(mocker):
+    from felling.src.email import send_email, smtplib
+    from smtplib import SMTP
+
+    class mock_smtp(SMTP):
+        def __init__(self, server, port=None) -> None:
+            self.server = server
+            self.port = port
+
+        def starttls(self, context):
+            return None
+
+        def login(self, email, passwd):
+            return None
+
+        def sendmail(self, sender, recipient, message):
+            return None
+
+    mocker.patch("smtplib.SMTP", mock_smtp)
+
+    send_email(
+        "willow@yew.com",
+        "ash@birch.com",
+        "TreesRCool",
+        None,
+        None,
+    )
+
+
 @pytest.mark.parametrize(
     "address_to_check", (("YEW"), ("not an email"), ("ash@birch."))
 )
