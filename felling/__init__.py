@@ -18,7 +18,7 @@ except ModuleNotFoundError:
 try:
     __version__ = version_getter("felling")
 except NoPackageError:
-    pass
+    __version__ = "Cannot find version"
 
 
 __doc__ = """
