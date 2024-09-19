@@ -1,5 +1,5 @@
 import sys
-from felling.src.compare_logs import compare_log_file, parse_args
+from felling.compare_logs import compare_log_file, parse_args
 
 
 if __name__ == "__main__":

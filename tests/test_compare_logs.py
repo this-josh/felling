@@ -23,7 +23,7 @@ simple_sample_logs = [
     ids=["Two files, less verbose", "Two files, more verbose"],
 )
 def test_parse_args(cli_args, expected):
-    from felling.src.compare_logs import parse_args
+    from felling.compare_logs import parse_args
 
     first_file, second_file, verbose = parse_args(cli_args)
 
@@ -32,11 +32,11 @@ def test_parse_args(cli_args, expected):
     assert verbose == expected[2]
 
 
-# TODO: Need a test for felling.src.compare_logs.read_file
+# TODO: Need a test for felling.compare_logs.read_file
 
 
 def test_tidy_logs():
-    from felling.src.compare_logs import tidy_logs
+    from felling.compare_logs import tidy_logs
 
     expected_logs = [
         "Ash",
@@ -48,7 +48,7 @@ def test_tidy_logs():
     assert tidied_logs == expected_logs
 
 
-# TODO: Need a test for felling.src.compare_logs.find_differences
+# TODO: Need a test for felling.compare_logs.find_differences
 
 
 @pytest.mark.parametrize(
@@ -71,7 +71,7 @@ def test_tidy_logs():
     ],
 )
 def test_find_difference(logs_1, logs_2, verbosity):
-    from felling.src.compare_logs import find_differences
+    from felling.compare_logs import find_differences
 
     find_differences(logs_1, logs_2, verbosity)
 
@@ -103,7 +103,7 @@ def test_find_difference(logs_1, logs_2, verbosity):
 )
 def test_compare_log_file(first_file, second_file, verbosity):
     """Test compare log file, this is only a rough test that nothing fails"""
-    from felling.src.compare_logs import compare_log_file
+    from felling.compare_logs import compare_log_file
 
     # identical files
     compare_log_file(first_file, second_file, verbosity)

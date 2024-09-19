@@ -46,13 +46,13 @@ import pytest
     ],
 )
 def test_send_email(to, sender, password, subject, content):
-    from felling.src.email import send_email
+    from felling.email import send_email
 
     send_email(to, sender, password, subject, content, smtp_server="localhost")
 
 
 def test_office_connections():
-    from felling.src.email import send_email
+    from felling.email import send_email
 
     send_email(
         "willow@yew.com",
@@ -64,7 +64,7 @@ def test_office_connections():
 
 
 def test_send_email_invalid():
-    from felling.src.email import send_email
+    from felling.email import send_email
 
     with pytest.raises(
         ValueError,
@@ -81,7 +81,7 @@ def test_send_email_invalid():
 
 
 def test_send_email_smtp_server():
-    from felling.src.email import send_email
+    from felling.email import send_email
 
     with pytest.raises(
         TypeError, match="smtp_server must be a str, not type <class 'int'>"
@@ -97,7 +97,7 @@ def test_send_email_smtp_server():
 
 
 def test_send_email_mock_smtp(mocker):
-    from felling.src.email import send_email, smtplib
+    from felling.email import send_email, smtplib
     from smtplib import SMTP
 
     class mock_smtp(SMTP):
@@ -129,7 +129,7 @@ def test_send_email_mock_smtp(mocker):
     "address_to_check", (("YEW"), ("not an email"), ("ash@birch."))
 )
 def test_check_email_address_invalid(address_to_check):
-    from felling.src.email import check_email_address
+    from felling.email import check_email_address
 
     with pytest.raises(
         ValueError, match=address_to_check + " is not a valid email address"
@@ -141,13 +141,13 @@ def test_check_email_address_invalid(address_to_check):
     "address_to_check", (("ash@birch-yew.co"), ("beach@pine.co.uk"), ("ash@birch.com"))
 )
 def test_check_email_address_valid(address_to_check):
-    from felling.src.email import check_email_address
+    from felling.email import check_email_address
 
     check_email_address(address_to_check)
 
 
 def test_get_sender_and_password_valid_env():
-    from felling.src.email import _get_sender_and_password
+    from felling.email import _get_sender_and_password
     import os
 
     os.environ.clear()
@@ -159,7 +159,7 @@ def test_get_sender_and_password_valid_env():
 
 
 def test_get_sender_and_password_invalid_email():
-    from felling.src.email import _get_sender_and_password
+    from felling.email import _get_sender_and_password
     import os
 
     os.environ.clear()
@@ -173,7 +173,7 @@ def test_get_sender_and_password_invalid_email():
 
 
 def test_get_sender_and_password_invalid_password():
-    from felling.src.email import _get_sender_and_password
+    from felling.email import _get_sender_and_password
     import os
 
     os.environ.clear()
