@@ -45,7 +45,6 @@
             ],
             "propagate": false
         }
-
     },
     "root": {
         "level": "DEBUG",

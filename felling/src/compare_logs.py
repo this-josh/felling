@@ -8,7 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 def parse_args(cli_arguments):
-
     parser = argparse.ArgumentParser(description="Compare two log files")
     parser.add_argument(
         "first_file",
@@ -154,7 +153,7 @@ def compare_log_file(file_1: str, file_2: str, verbose: int):
     if f1_log_messages == f2_log_messages:
         # \U0001F600 prints a smiley emoji :)
         print(
-            "\U0001F600\U0001F600\U0001F600Woo! the logs messages are identical\U0001F600\U0001F600\U0001F600"
+            "\U0001f600\U0001f600\U0001f600Woo! the logs messages are identical\U0001f600\U0001f600\U0001f600"
         )
     else:
         find_differences(f1_log_messages, f2_log_messages, verbose)

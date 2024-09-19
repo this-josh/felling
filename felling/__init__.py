@@ -1,6 +1,7 @@
 """
 A package for consistent logging
 """
+
 from felling.src.configure_felling import configure
 from felling.src.email import send_email
 

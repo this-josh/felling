@@ -175,9 +175,7 @@ def configure(
         log_path.mkdir()
 
     # read in logger config
-    with open(
-        resources.files("felling")/"resources/logger.json", "rt"
-    ) as json_file:
+    with open(resources.files("felling") / "resources/logger.json", "rt") as json_file:
         config = json.load(json_file)
 
     config = _specific_modules(config, error_only_modules, "ERROR")
