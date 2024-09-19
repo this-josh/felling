@@ -33,6 +33,7 @@ dev-dependencies = [
     "ruff>=0.6.5",
     "flake8>=7.1.1",
     "coverage>=7.6.1",
+    "sphinx>=8.0.2",
 ]
 
 [tool.hatch.metadata]
