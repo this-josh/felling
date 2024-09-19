@@ -14,8 +14,6 @@ classifiers = [
     "Operating System :: OS Independent",
     "License :: OSI Approved :: MIT License"
 ]
-dependencies = []
-
 
 [project.urls]
 Source = "https://github.com/this-josh/felling"
@@ -35,7 +33,6 @@ dev-dependencies = [
     "ruff>=0.6.5",
     "flake8>=7.1.1",
     "coverage>=7.6.1",
-    "sphinx>=8.0.2",
 ]
 
 [tool.hatch.metadata]
