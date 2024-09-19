@@ -7,8 +7,9 @@ from logging.config import dictConfig
 import subprocess
 import getpass
 import json
-import pkg_resources
 import inspect
+from importlib import resources
+
 
 logger = logging.getLogger("Initial logs")
 
@@ -175,7 +176,7 @@ def configure(
 
     # read in logger config
     with open(
-        pkg_resources.resource_filename("felling", "/resources/logger.json"), "rt"
+        resources.files("felling")/"resources/logger.json", "rt"
     ) as json_file:
         config = json.load(json_file)
 
