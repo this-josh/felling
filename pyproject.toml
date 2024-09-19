@@ -1,6 +1,6 @@
 [project]
 name = "felling"
-version = "0.1.5"
+version = "0.1.6"
 description = "A simple package to easily create consistent logs"
 authors = [{ name = "Josh Kirk", email = "felling@joshkirk.co.uk" }]
 readme = "README.md"
