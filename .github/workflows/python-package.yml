@@ -23,7 +23,7 @@ jobs:
       uses: eifinger/setup-rye@v4
     - name: Set up Python ${{ matrix.python-version }} with Rye
       run: |
-        rye pin python ${{ matrix.python-version }}
+        rye pin ${{ matrix.python-version }}
     - name: Install dependencies with Rye
       run: |
         rye sync --dev
