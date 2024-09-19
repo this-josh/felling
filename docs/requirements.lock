@@ -9,15 +9,6 @@
 #   generate-hashes: false
 #   universal: false
 
+felling
 sphinx==7.0.0
-    # via sphinxcontrib-websupport
 sphinx-rtd-theme==2.0.0
-    # via felling
-    # via sphinx
-    # via sphinx
-    # via sphinx
-    # via sphinx-rtd-theme
-    # via sphinx
-    # via sphinx
-    # via sphinxcontrib-websupport
-    # via sphinx
