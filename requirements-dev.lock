@@ -3,19 +3,27 @@
 #
 # last locked with the following flags:
 #   pre: false
-#   features: []
+#   features: ["dev"]
 #   all-features: false
 #   with-sources: false
 #   generate-hashes: false
 #   universal: false
 
 -e file:.
+coverage==7.6.1
+flake8==7.1.1
 iniconfig==2.0.0
     # via pytest
+mccabe==0.7.0
+    # via flake8
 packaging==24.1
     # via pytest
 pluggy==1.5.0
     # via pytest
+pycodestyle==2.12.1
+    # via flake8
+pyflakes==3.2.0
+    # via flake8
 pytest==8.3.3
     # via pytest-mock
 pytest-mock==3.14.0
